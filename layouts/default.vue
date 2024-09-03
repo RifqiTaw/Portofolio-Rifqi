@@ -1,4 +1,3 @@
-<!-- layouts/default.vue -->
 <template>
   <div class="flex flex-col min-h-screen">
     <Navbar />
@@ -14,6 +13,4 @@ import Navbar from "~/components/Navbar.vue";
 import Footer from "~/components/Footer.vue";
 </script>
 
-<style scoped>
-/* Tambahkan style tambahan jika diperlukan */
-</style>
+<style scoped></style>

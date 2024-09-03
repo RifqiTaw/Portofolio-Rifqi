@@ -1,4 +1,3 @@
-<!-- components/Footer.vue -->
 <template>
   <footer class="bg-[#f5f5f5] text-center py-4">
     <p class="text-gray-700">
@@ -10,12 +9,7 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
-
-// Get the current year
 const currentYear = new Date().getFullYear();
 </script>
 
-<style scoped>
-/* Tambahkan style tambahan jika diperlukan */
-</style>
+<style scoped></style>

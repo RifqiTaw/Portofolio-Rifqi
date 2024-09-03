@@ -80,7 +80,6 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
 import { gsap } from "gsap";
 
 onMounted(() => {
