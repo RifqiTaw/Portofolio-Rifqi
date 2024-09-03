@@ -1,0 +1,19 @@
+<!-- layouts/default.vue -->
+<template>
+  <div class="flex flex-col min-h-screen">
+    <Navbar />
+    <main class="flex-1">
+      <NuxtPage />
+    </main>
+    <Footer />
+  </div>
+</template>
+
+<script setup>
+import Navbar from "~/components/Navbar.vue";
+import Footer from "~/components/Footer.vue";
+</script>
+
+<style scoped>
+/* Tambahkan style tambahan jika diperlukan */
+</style>
