@@ -84,23 +84,23 @@
 <script setup>
 import Section from "~/components/Section.vue";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+// import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
+// gsap.registerPlugin(ScrollTrigger);
 
 onMounted(() => {
-  gsap.from(".card", {
-    y: 50,
-    opacity: 0,
-    duration: 1,
-    stagger: 0.2,
-    ease: "power2.out",
-    scrollTrigger: {
-      trigger: ".card",
-      start: "top 80%",
-      toggleActions: "play none none none",
-    },
-  });
+  // gsap.from(".card", {
+  //   y: 50,
+  //   opacity: 0,
+  //   duration: 1,
+  //   stagger: 0.2,
+  //   ease: "power2.out",
+  //   scrollTrigger: {
+  //     trigger: ".card",
+  //     start: "top 80%",
+  //     toggleActions: "play none none none",
+  //   },
+  // });
 });
 
 const projects = [
