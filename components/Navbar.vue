@@ -1,7 +1,7 @@
 <template>
   <nav
     ref="navbar"
-    class="bg-[#111] text-white shadow fixed w-full h-[92px] z-20 flex items-center"
+    class="bg-gradient-to-r from-[#00DC82] via-[#007A5E] to-[#3A3D98] text-white shadow fixed w-full h-[92px] z-20 flex items-center"
   >
     <div
       class="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-full"
@@ -20,8 +20,8 @@
           to="/"
           :class="`px-3 py-2 rounded-md text-sm font-medium ${
             isActive('/')
-              ? 'bg-gray-900 text-white'
-              : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+              ? 'bg-gray-900 text-white border-b-4 border-yellow-500 shadow-md'
+              : 'bg-white text-gray-900 hover:bg-gray-100'
           }`"
         >
           Home
@@ -31,8 +31,8 @@
           to="/about"
           :class="`px-3 py-2 rounded-md text-sm font-medium ${
             isActive('/about')
-              ? 'bg-gray-900 text-white'
-              : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+              ? 'bg-gray-900 text-white border-b-4 border-yellow-500 shadow-md'
+              : 'bg-white text-gray-900 hover:bg-gray-100'
           }`"
         >
           About
@@ -42,8 +42,8 @@
           to="/project"
           :class="`px-3 py-2 rounded-md text-sm font-medium ${
             isActive('/project')
-              ? 'bg-gray-900 text-white'
-              : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+              ? 'bg-gray-900 text-white border-b-4 border-yellow-500 shadow-md'
+              : 'bg-white text-gray-900 hover:bg-gray-100'
           }`"
         >
           Projects
@@ -53,8 +53,8 @@
           to="/contact"
           :class="`px-3 py-2 rounded-md text-sm font-medium ${
             isActive('/contact')
-              ? 'bg-gray-900 text-white'
-              : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+              ? 'bg-gray-900 text-white border-b-4 border-yellow-500 shadow-md'
+              : 'bg-white text-gray-900 hover:bg-gray-100'
           }`"
         >
           Contact

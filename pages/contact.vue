@@ -1,32 +1,36 @@
 <template>
-  <div class="bg-white py-16 pt-32">
-    <div class="mx-auto max-w-7xl px-6">
-      <!-- Section Title -->
+  <div class="relative py-16 pt-32">
+    <div
+      class="absolute inset-0 bg-cover bg-center"
+      style="background-image: url('/images/background.jpg')"
+    ></div>
+
+    <div class="absolute inset-0 bg-black opacity-50"></div>
+
+    <div class="relative z-10 mx-auto max-w-7xl px-6">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold tracking-tight text-gray-900">Contact</h2>
-        <p class="mt-2 text-lg text-gray-600">
+        <h2 class="text-3xl font-bold tracking-tight text-white">Contact</h2>
+        <p class="mt-2 text-lg text-white">
           Get in touch with me via social media or email.
         </p>
       </div>
 
-      <!-- Social Media Icons -->
       <div class="flex justify-center gap-8 mb-12">
         <a href="https://www.linkedin.com/in/rifqi-taufiqurrohman98/">
-          <Icon name="mdi:linkedin" style="color: black" size="30" />
+          <Icon name="mdi:linkedin" style="color: white" size="30" />
         </a>
         <a href="https://www.instagram.com/rifqi_taw/">
-          <Icon name="mdi:instagram" style="color: black" size="30" />
+          <Icon name="mdi:instagram" style="color: white" size="30" />
         </a>
       </div>
 
-      <!-- Contact Form -->
       <div class="max-w-xl mx-auto bg-white p-8 rounded-lg shadow-lg">
         <p class="mb-6 text-lg text-gray-900">Send me an email</p>
         <form @submit.prevent="submitForm">
           <div class="mb-4">
-            <label for="name" class="block text-sm font-medium text-gray-700">
-              Name
-            </label>
+            <label for="name" class="block text-sm font-medium text-gray-700"
+              >Name</label
+            >
             <input
               type="text"
               id="name"
@@ -36,9 +40,9 @@
             />
           </div>
           <div class="mb-4">
-            <label for="email" class="block text-sm font-medium text-gray-700">
-              Email
-            </label>
+            <label for="email" class="block text-sm font-medium text-gray-700"
+              >Email</label
+            >
             <input
               type="email"
               id="email"
@@ -48,12 +52,9 @@
             />
           </div>
           <div class="mb-4">
-            <label
-              for="message"
-              class="block text-sm font-medium text-gray-700"
+            <label for="message" class="block text-sm font-medium text-gray-700"
+              >Message</label
             >
-              Message
-            </label>
             <textarea
               id="message"
               v-model="form.message"
@@ -126,4 +127,31 @@ const submitForm = async () => {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.inset-0 {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.bg-cover {
+  background-size: cover;
+}
+
+.bg-center {
+  background-position: center;
+}
+
+.bg-black {
+  background-color: black;
+}
+</style>
