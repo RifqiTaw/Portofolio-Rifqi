@@ -118,7 +118,7 @@ const projects = [
   {
     title: "Xiaomi Website Indonesia",
     description: "Clone xiaomi website indonesia mi.co.id (only phone).",
-    image: "/images/xiaomi1.png",
+    image: "/images/xiaomi.png",
     perusahaan: "Xiaomi Corporation",
     link: "https://github.com/RifqiTaw",
     website: "https://github.com/RifqiTaw",
