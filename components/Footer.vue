@@ -1,6 +1,6 @@
 <template>
   <footer
-    class="bg-gradient-to-r from-[#00DC82] via-[#007A5E] to-[#3A3D98] text-white py-8 border-t border-gray-300"
+    class="bg-gradient-to-r from-[#005b43] to-[#2b2c71] text-white py-8 border-t border-gray-300"
   >
     <div class="container mx-auto px-4">
       <div
@@ -10,7 +10,7 @@
         <div class="mb-6 md:mb-0 md:w-1/3">
           <h3 class="text-sm font-semibold text-white mb-2">VISIT</h3>
           <p class="text-white">
-            Jalan Gelatik dalam no 46 / 151- C<br />
+            <br />
             Bandung, Indonesia
           </p>
         </div>

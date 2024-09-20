@@ -8,11 +8,23 @@ export default defineNuxtConfig({
       link: [{ rel: "icon", type: "image/x-icon", href: "/ts-only.png" }],
     },
   },
-  modules: ["@nuxtjs/tailwindcss", "shadcn-nuxt", "nuxt-icon"],
+  modules: [
+    "@nuxtjs/tailwindcss",
+    "shadcn-nuxt",
+    "nuxt-icon",
+    "@nuxtjs/google-fonts",
+  ],
+  googleFonts: {
+    families: {
+      Montserrat: [400, 700],
+      Roboto: [100, 400, 500, 700],
+      families: {
+        Poppins: [400, 600, 700],
+      },
+    },
+    display: "swap",
+  },
   shadcn: {
-    /**
-     * Prefix for all the imported component
-     */
     prefix: "",
     /**
      * Directory that the component lives in.

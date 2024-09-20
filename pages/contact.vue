@@ -1,12 +1,5 @@
 <template>
   <div class="relative py-16 pt-32">
-    <div
-      class="absolute inset-0 bg-cover bg-center"
-      style="background-image: url('/images/background.jpg')"
-    ></div>
-
-    <div class="absolute inset-0 bg-black opacity-50"></div>
-
     <div class="relative z-10 mx-auto max-w-7xl px-6">
       <div class="text-center mb-12">
         <h2 class="text-3xl font-bold tracking-tight text-white">Contact</h2>

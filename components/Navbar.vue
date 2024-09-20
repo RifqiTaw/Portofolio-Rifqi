@@ -1,7 +1,7 @@
 <template>
   <nav
     ref="navbar"
-    class="bg-gradient-to-r from-[#00DC82] via-[#007A5E] to-[#3A3D98] text-white shadow fixed w-full h-[92px] z-20 flex items-center"
+    class="bg-gradient-to-r from-[#005b43] to-[#2b2c71] text-white shadow fixed w-full h-[92px] z-20 flex items-center"
   >
     <div
       class="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-full"

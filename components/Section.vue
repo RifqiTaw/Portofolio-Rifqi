@@ -1,14 +1,6 @@
 <template>
-  <div class="bg-white">
-    <div
-      class="relative flex items-center justify-center min-h-screen bg-gray-100"
-    >
-      <!-- Background Teknologi -->
-      <div
-        class="absolute inset-0 bg-cover bg-no-repeat bg-center opacity-60"
-        style="background-image: url('/images/e.jpg')"
-      ></div>
-
+  <div class="">
+    <div class="relative flex items-center justify-center min-h-screen">           
       <!-- Gambar di Tengah -->
       <img
         ref="image"

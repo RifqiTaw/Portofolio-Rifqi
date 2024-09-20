@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white py-16 pt-32">
+  <div class="py-16 pt-32">
     <div class="mx-auto max-w-7xl px-6">
       <!-- Section Title -->
       <div class="text-center mb-12">

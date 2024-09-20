@@ -3,14 +3,14 @@
     <Section />
 
     <div class="container mx-auto p-6">
-      <h1 class="card text-3xl font-bold mb-6 text-center">
+      <h1 class="card text-3xl font-bold mb-6 text-center text-white">
         Some of my latest projects
       </h1>
       <div class="card grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <div
           v-for="(project, index) in projects"
           :key="index"
-          class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+          class="bg-white text-gray-800 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-4"
         >
           <template v-if="index !== 2">
             <img
@@ -26,7 +26,7 @@
 
           <template v-else>
             <div
-              class="relative h-48 bg-gray-200 flex items-center justify-center"
+              class="relative h-full bg-gray-200 flex items-center justify-center"
             >
               <img
                 :src="project.image"
@@ -84,23 +84,39 @@
 <script setup>
 import Section from "~/components/Section.vue";
 import gsap from "gsap";
-// import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-// gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger);
 
-onMounted(() => {
-  // gsap.from(".card", {
-  //   y: 50,
-  //   opacity: 0,
-  //   duration: 1,
-  //   stagger: 0.2,
-  //   ease: "power2.out",
-  //   scrollTrigger: {
-  //     trigger: ".card",
-  //     start: "top 80%",
-  //     toggleActions: "play none none none",
-  //   },
-  // });
+onMounted(async () => {
+  await nextTick();
+
+  gsap.to(".loading-logo", {
+    opacity: 1,
+    scale: 1.2,
+    duration: 1.5,
+    ease: "power2.inOut",
+    onComplete: async () => {
+      gsap.to(loadingScreen.value, {
+        opacity: 0,
+        duration: 1,
+        ease: "power2.inOut",
+        onComplete: async () => {
+          loading.value = false;
+          await nextTick();
+          if (content.value) {
+            gsap.to(content.value, {
+              opacity: 1,
+              duration: 1.5,
+              ease: "power2.out",
+            });
+          } else {
+            console.error("Elemen konten tidak ditemukan!");
+          }
+        },
+      });
+    },
+  });  
 });
 
 const projects = [
@@ -136,3 +152,5 @@ const projects = [
   },
 ];
 </script>
+
+<style scoped></style>

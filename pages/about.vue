@@ -1,14 +1,12 @@
 <template>
-  <div class="bg-white">
+  <div>
     <div class="relative">
       <div
         class="mx-auto max-w-7xl pt-40 py-6 flex flex-col md:flex-row items-center justify-between gap-10"
       >
         <!-- Left Column: Text Content -->
         <div class="fade-slide text-center md:text-left md:w-1/2">
-          <h1
-            class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl"
-          >
+          <h1 class="text-4xl font-bold tracking-tight text-white sm:text-6xl">
             about.
           </h1>
           <span
@@ -16,7 +14,7 @@
           >
             I'm a Frontend Developer based in Bandung, Indonesia.
           </span>
-          <p class="mt-6 text-lg leading-8 text-gray-600">
+          <p class="mt-6 text-lg leading-8 text-white">
             Since 2022, I've enjoyed turning complex problems into simple,
             beautiful and intuitive designs. When I'm not pushing pixels, you'll
             find me cooking, gardening, or working out in the park.
@@ -83,7 +81,7 @@
     </div>
   </div>
   <!-- Section 2: My Skills -->
-  <div class="bg-[#f9f9f9] py-16 skill-card">
+  <div class="py-16 skill-card">
     <div class="mx-auto max-w-7xl px-6">
       <h2 class="text-3xl font-bold tracking-tight text-gray-900 text-center">
         Tech Stack & Skills
@@ -107,7 +105,7 @@
   <div class="bg-white py-16 pt-10">
     <div class="mx-auto max-w-7xl px-6">
       <h2
-        class="text-3xl font-bold tracking-tight text-gray-900 text-center mb-12"
+        class="text-3xl font-bold tracking-tight text-white text-center mb-12"
       >
         Pengalaman Kerja
       </h2>
