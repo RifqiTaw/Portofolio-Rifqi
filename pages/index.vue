@@ -83,38 +83,8 @@
 
 <script setup>
 import Section from "~/components/Section.vue";
-import gsap from "gsap";
 
-onMounted(async () => {
-  await nextTick();
-
-  gsap.to(".loading-logo", {
-    opacity: 1,
-    scale: 1.2,
-    duration: 1.5,
-    ease: "power2.inOut",
-    onComplete: async () => {
-      gsap.to(loadingScreen.value, {
-        opacity: 0,
-        duration: 1,
-        ease: "power2.inOut",
-        onComplete: async () => {
-          loading.value = false;
-          await nextTick();
-          if (content.value) {
-            gsap.to(content.value, {
-              opacity: 1,
-              duration: 1.5,
-              ease: "power2.out",
-            });
-          } else {
-            console.error("Elemen konten tidak ditemukan!");
-          }
-        },
-      });
-    },
-  });
-});
+onMounted(async () => {});
 
 const projects = [
   {

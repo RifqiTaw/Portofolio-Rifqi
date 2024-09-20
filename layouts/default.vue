@@ -105,7 +105,7 @@ onMounted(async () => {
   transform: translateX(-50%);
 }
 .content {
-  background-image: url("images/7.jpg");
+  background-image: url("images/background.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
