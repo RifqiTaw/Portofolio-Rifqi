@@ -84,9 +84,6 @@
 <script setup>
 import Section from "~/components/Section.vue";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
 
 onMounted(async () => {
   await nextTick();
@@ -116,7 +113,7 @@ onMounted(async () => {
         },
       });
     },
-  });  
+  });
 });
 
 const projects = [
