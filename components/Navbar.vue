@@ -1,7 +1,7 @@
 <template>
   <nav
     ref="navbar"
-    class="bg-gradient-to-r from-[#005b43] to-[#2b2c71] text-white shadow fixed w-full h-[92px] z-20 flex items-center"
+    class="bg-[#0d1b2a] text-white shadow fixed w-full h-[92px] z-20 flex items-center"
   >
     <div
       class="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-full"
@@ -9,7 +9,7 @@
       <!-- Left Section: Logo -->
       <div class="flex items-center flex-shrink-0">
         <a :class="`text-2xl font-bold logo`" href="/">
-          <span> Rifqi Taw </span>
+          <span class="text-white hover:text-[#00C6FF]"> Rifqi Taw </span>
         </a>
       </div>
 
@@ -18,10 +18,8 @@
         <router-link
           @click="animateNavbar"
           to="/"
-          :class="`px-3 py-2 rounded-md text-sm font-medium ${
-            isActive('/')
-              ? 'bg-gray-900 text-white border-b-4 border-yellow-500 shadow-md'
-              : 'bg-white text-gray-900 hover:bg-gray-100'
+          :class="`px-3 py-2 text-sm font-medium ${
+            isActive('/') ? 'text-[#00E5FF]' : 'text-white hover:text-[#00C6FF]'
           }`"
         >
           Home
@@ -31,8 +29,8 @@
           to="/about"
           :class="`px-3 py-2 rounded-md text-sm font-medium ${
             isActive('/about')
-              ? 'bg-gray-900 text-white border-b-4 border-yellow-500 shadow-md'
-              : 'bg-white text-gray-900 hover:bg-gray-100'
+              ? 'text-[#00E5FF]'
+              : 'text-white hover:text-[#00C6FF]'
           }`"
         >
           About
@@ -42,8 +40,8 @@
           to="/project"
           :class="`px-3 py-2 rounded-md text-sm font-medium ${
             isActive('/project')
-              ? 'bg-gray-900 text-white border-b-4 border-yellow-500 shadow-md'
-              : 'bg-white text-gray-900 hover:bg-gray-100'
+              ? 'text-[#00E5FF]'
+              : 'text-white hover:text-[#00C6FF]'
           }`"
         >
           Projects
@@ -53,8 +51,8 @@
           to="/contact"
           :class="`px-3 py-2 rounded-md text-sm font-medium ${
             isActive('/contact')
-              ? 'bg-gray-900 text-white border-b-4 border-yellow-500 shadow-md'
-              : 'bg-white text-gray-900 hover:bg-gray-100'
+              ? 'text-[#00E5FF]'
+              : 'text-white hover:text-[#00C6FF]'
           }`"
         >
           Contact
@@ -63,8 +61,8 @@
 
       <!-- Right Section: Dark Mode Toggle and GitHub Icon -->
       <div class="flex items-center space-x-4">
-        <a href="https://github.com/RifqiTaw">
-          <Icon name="mdi:github" style="color: white" size="30" />
+        <a href="https://github.com/RifqiTaw" class="hover:text-[#00C6FF]">
+          <Icon name="mdi:github" size="30" />
         </a>
       </div>
     </div>

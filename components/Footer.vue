@@ -1,6 +1,6 @@
 <template>
   <footer
-    class="bg-gradient-to-r from-[#005b43] to-[#2b2c71] text-white py-8 border-t border-gray-300"
+    class="bg-[#0d1b2a] text-white py-8 border-t border-gray-300"
   >
     <div class="container mx-auto px-4">
       <div

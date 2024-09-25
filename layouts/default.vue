@@ -32,33 +32,32 @@ const content = ref(null);
 onMounted(async () => {
   await nextTick();
 
-  gsap.to(".loading-logo", {
-    opacity: 1,
-    scale: 1.2,
-    duration: 1.5,
-    ease: "power2.inOut",
-    onComplete: async () => {
-      gsap.to(loadingScreen.value, {
-        opacity: 0,
-        duration: 0.5,
-        ease: "power2.inOut",
-        onComplete: async () => {
-          loading.value = false;
-          await nextTick();
-          if (content.value) {
-            gsap.to(content.value, {
-              opacity: 1,
-              duration: 0.5,
-              delay: 0.3,
-              ease: "power2.out",
-            });
-          } else {
-            console.error("Elemen konten tidak ditemukan!");
-          }
-        },
-      });
-    },
-  });
+  gsap
+    .timeline()
+    .fromTo(
+      ".loading-logo",
+      { opacity: 0, scale: 0.8 },
+      { opacity: 1, scale: 1.5, duration: 1.5, ease: "power4.inOut" }
+    )
+    .to(".loading-logo", {
+      scale: 1,
+      duration: 0.5,
+      ease: "power4.out",
+    })
+    .to(loadingScreen.value, {
+      opacity: 0,
+      duration: 1,
+      ease: "power2.inOut",
+      onComplete: () => {
+        loading.value = false;
+      },
+    });
+
+  gsap.fromTo(
+    content.value,
+    { opacity: 0 },
+    { opacity: 1, duration: 1.5, ease: "power2.out", delay: 0.5 }
+  );
 
   gsap.fromTo(
     ".scroll-wheel",
@@ -109,7 +108,7 @@ onMounted(async () => {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: black !important;
+  background-color: #0d1b2a !important;
   opacity: 0;
 }
 .loading-screen {
@@ -120,7 +119,6 @@ onMounted(async () => {
   height: 100vh;
   background-color: black;
   display: flex;
-  color: white;
   align-items: center;
   justify-content: center;
   z-index: 1000;
@@ -132,6 +130,7 @@ onMounted(async () => {
   background: linear-gradient(90deg, #005b43, #2b2c71);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
   opacity: 0;
 }
 </style>

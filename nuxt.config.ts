@@ -5,7 +5,7 @@ export default defineNuxtConfig({
   app: {
     head: {
       title: "Rifqi Taufiqurrohman",
-      link: [{ rel: "icon", type: "image/x-icon", href: "/ts-only.png" }],
+      link: [{ rel: "icon", type: "image/x-icon", href: "/rifqi.jpg" }],
     },
   },
   modules: [

@@ -102,67 +102,66 @@
       </div>
     </div>
   </div>
-  <div class="bg-white py-16 pt-10">
-    <div class="mx-auto max-w-7xl px-6">
-      <h2
-        class="text-3xl font-bold tracking-tight text-white text-center mb-12"
-      >
+  <div class="py-16 pt-10">
+    <div class="mx-auto max-w-7xl bg-white py-16 pt-10">
+      <h2 class="text-3xl font-bold tracking-tight text-center mb-12">
         Pengalaman Kerja
       </h2>
       <div class="relative">
         <div
-          class="border-l-2 border-gray-300 absolute left-1/2 transform -translate-x-1/2 h-full"
+          class="border-l-2 border-dashed border-blue-500 absolute left-1/2 transform -translate-x-1/2 h-full"
         ></div>
 
         <!-- Timeline Item 1 -->
         <div
           ref="timelineItem1"
-          class="relative flex items-start mb-8 justify-between"
+          class="relative flex items-start mb-8 justify-between fade-in"
         >
           <div class="w-1/2 pr-8 text-right">
             <img
-              src="/images/pertamina.png"
-              alt="Pertamina Logo"
+              src="/images/ypt.png"
+              alt="Telkom Logo"
               class="h-8 mb-2 ml-auto"
             />
-            <h3 class="text-xl font-semibold text-gray-900">
-              PT. Pertamina EP Asset 4 Field Poleng - Surabaya
+            <h3 class="text-xl font-semibold">
+              Yayasan Pendidikan Telkom - Bandung
             </h3>
-            <p class="text-gray-600">
-              Unit ICT (Information Communication & Technology) (2019)
-            </p>
-            <p class="mt-2 text-gray-700">
-              Mengembangkan aplikasi web untuk internal perusahaan dan proyek
-              publik.
+            <p class="text-gray-400">Frontend Developer (2022 - Now)</p>
+            <p class="mt-2 text-gray-500">
+              Responsible for frontend development of several internal
+              applications.
             </p>
           </div>
           <div
-            class="absolute left-1/2 transform -translate-x-1/2 w-5 h-5 bg-blue-500 rounded-full"
+            class="absolute left-1/2 transform -translate-x-1/2 w-5 h-5 bg-blue-500 rounded-full timeline-dot"
           ></div>
         </div>
 
         <!-- Timeline Item 2 -->
         <div
           ref="timelineItem2"
-          class="relative flex items-start mb-8 justify-between flex-row-reverse"
+          class="relative flex items-start mb-8 justify-between flex-row-reverse fade-in"
         >
           <div
-            class="absolute left-1/2 transform -translate-x-1/2 w-5 h-5 bg-green-500 rounded-full"
+            class="absolute left-1/2 transform -translate-x-1/2 w-5 h-5 bg-green-500 rounded-full timeline-dot"
           ></div>
           <div class="w-1/2 pl-8">
-            <img src="/images/ypt.png" alt="Telkom Logo" class="h-8 mb-2" />
-            <h3 class="text-xl font-semibold text-gray-900">
-              Yayasan Pendidikan Telkom - Bandung
+            <img
+              src="/images/pertamina.png"
+              alt="Pertamina Logo"
+              class="h-8 mb-2"
+            />
+            <h3 class="text-xl font-semibold">
+              PT. Pertamina EP Asset 4 Field Poleng - Surabaya
             </h3>
-            <p class="text-gray-600">Frontend Developer (2022 - Now)</p>
-            <p class="mt-2 text-gray-700">
-              Bertanggung jawab untuk pengembangan frontend dari beberapa
-              aplikasi internal.
+            <p class="text-gray-400">
+              Unit ICT (Information Communication & Technology) (2019)
+            </p>
+            <p class="mt-2 text-gray-500">
+              Develop web applications for internal company and public projects.
             </p>
           </div>
         </div>
-
-        <!-- Tambah item lainnya jika perlu -->
       </div>
     </div>
   </div>
@@ -186,6 +185,28 @@ const closeModal = () => {
 };
 
 onMounted(() => {
+  gsap.from(".timeline-item-left", {
+    opacity: 0,
+    x: -100,
+    duration: 1,
+    ease: "power2.out",
+    stagger: 0.2,
+  });
+
+  gsap.from(".timeline-item-right", {
+    opacity: 0,
+    x: 100,
+    duration: 1,
+    ease: "power2.out",
+    stagger: 0.2,
+  });
+
+  gsap.from(".timeline-dot", {
+    scale: 0,
+    duration: 1,
+    ease: "bounce.out",
+    stagger: 0.2,
+  });
   gsap.from(timelineItem1.value, {
     opacity: 0,
     x: -50,
@@ -271,6 +292,19 @@ const skills = [
 ];
 </script>
 <style scoped>
+.bg-white {
+  background-color: #ffffff;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+.timeline-dot {
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  transition: background 0.3s ease;
+}
+
+.timeline-dot:hover {
+  background: linear-gradient(135deg, #facc15, #f0b90b);
+}
 .card {
   width: fit-content;
   height: fit-content;
