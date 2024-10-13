@@ -2,7 +2,7 @@
   <div>
     <div class="relative">
       <div
-        class="mx-auto max-w-7xl pt-40 py-6 flex flex-col md:flex-row items-center justify-between gap-10"
+        class="mx-auto max-w-7xl pt-40 py-6 flex flex-col md:flex-row items-center justify-between gap-10 p-4"
       >
         <!-- Left Column: Text Content -->
         <div class="fade-slide text-center md:text-left md:w-1/2">
@@ -83,7 +83,7 @@
   <!-- Section 2: My Skills -->
   <div class="py-16 skill-card">
     <div class="mx-auto max-w-7xl px-6">
-      <h2 class="text-3xl font-bold tracking-tight text-gray-900 text-center">
+      <h2 class="text-3xl font-bold tracking-tight text-white text-center">
         Tech Stack & Skills
       </h2>
       <div
@@ -98,69 +98,6 @@
           <Icon :name="skill.icon" class="h-20 w-20 mb-4 text-blue-500" />
           <h3 class="text-xl font-semibold text-gray-900">{{ skill.name }}</h3>
           <p class="mt-2 text-gray-600">{{ skill.description }}</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="py-16 pt-10">
-    <div class="mx-auto max-w-7xl bg-white py-16 pt-10">
-      <h2 class="text-3xl font-bold tracking-tight text-center mb-12">
-        Pengalaman Kerja
-      </h2>
-      <div class="relative">
-        <div
-          class="border-l-2 border-dashed border-blue-500 absolute left-1/2 transform -translate-x-1/2 h-full"
-        ></div>
-
-        <!-- Timeline Item 1 -->
-        <div
-          ref="timelineItem1"
-          class="relative flex items-start mb-8 justify-between fade-in"
-        >
-          <div class="w-1/2 pr-8 text-right">
-            <img
-              src="/images/ypt.png"
-              alt="Telkom Logo"
-              class="h-8 mb-2 ml-auto"
-            />
-            <h3 class="text-xl font-semibold">
-              Yayasan Pendidikan Telkom - Bandung
-            </h3>
-            <p class="text-gray-400">Frontend Developer (2022 - Now)</p>
-            <p class="mt-2 text-gray-500">
-              Responsible for frontend development of several internal
-              applications.
-            </p>
-          </div>
-          <div
-            class="absolute left-1/2 transform -translate-x-1/2 w-5 h-5 bg-blue-500 rounded-full timeline-dot"
-          ></div>
-        </div>
-
-        <!-- Timeline Item 2 -->
-        <div
-          ref="timelineItem2"
-          class="relative flex items-start mb-8 justify-between flex-row-reverse fade-in"
-        >
-          <div
-            class="absolute left-1/2 transform -translate-x-1/2 w-5 h-5 bg-green-500 rounded-full timeline-dot"
-          ></div>
-          <div class="w-1/2 pl-8">
-            <img
-              src="/images/pertamina.png"
-              alt="Pertamina Logo"
-              class="h-8 mb-2"
-            />
-            <h3 class="text-xl font-semibold">
-              PT. Pertamina EP Asset 4 Field Poleng - Surabaya
-            </h3>
-            <p class="text-gray-400">
-              Unit ICT (Information Communication & Technology) (2019)
-            </p>
-            <p class="mt-2 text-gray-500">
-              Develop web applications for internal company and public projects.
-            </p>
-          </div>
         </div>
       </div>
     </div>

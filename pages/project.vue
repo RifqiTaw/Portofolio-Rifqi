@@ -1,9 +1,9 @@
 <template>
-  <div class="py-16 pt-32">
+  <div class="py-16">
     <div class="mx-auto max-w-7xl px-6">
       <!-- Section Title -->
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold tracking-tight text-gray-900">
+        <h2 class="text-3xl font-bold tracking-tight text-white">
           All the projects I've ever done
         </h2>
       </div>

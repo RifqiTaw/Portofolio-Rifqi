@@ -1,7 +1,7 @@
 <template>
   <nav
     ref="navbar"
-    class="bg-[#0d1b2a] text-white shadow fixed w-full h-[92px] z-20 flex items-center"
+    class="text-white shadow w-full h-[92px] z-20 flex items-center"
   >
     <div
       class="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-full"
@@ -37,6 +37,17 @@
         </router-link>
         <router-link
           @click="animateNavbar"
+          to="/experience"
+          :class="`px-3 py-2 rounded-md text-sm font-medium ${
+            isActive('/experience')
+              ? 'text-[#00E5FF]'
+              : 'text-white hover:text-[#00C6FF]'
+          }`"
+        >
+          Experience
+        </router-link>
+        <router-link
+          @click="animateNavbar"
           to="/project"
           :class="`px-3 py-2 rounded-md text-sm font-medium ${
             isActive('/project')
@@ -61,7 +72,11 @@
 
       <!-- Right Section: Dark Mode Toggle and GitHub Icon -->
       <div class="flex items-center space-x-4">
-        <a href="https://github.com/RifqiTaw" class="hover:text-[#00C6FF]">
+        <a
+          href="https://github.com/RifqiTaw"
+          target="_blank"
+          class="hover:text-[#00C6FF]"
+        >
           <Icon name="mdi:github" size="30" />
         </a>
       </div>

@@ -4,7 +4,7 @@
       <h1 class="loading-logo">Rifqi Taw</h1>
     </div>
     <div v-show="!loading" class="content" ref="content">
-      <Navbar />
+      <Header />
       <main class="flex-1">
         <NuxtPage />
       </main>
@@ -20,8 +20,9 @@
 </template>
 
 <script setup>
+import "primeicons/primeicons.css";
 import { ref, onMounted, nextTick } from "vue";
-import Navbar from "~/components/Navbar.vue";
+import Header from "~/components/Header.vue";
 import Footer from "~/components/Footer.vue";
 import gsap from "gsap";
 

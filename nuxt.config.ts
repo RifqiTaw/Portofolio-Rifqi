@@ -1,4 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import Aura from "@primevue/themes/aura";
+
 export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
   devtools: { enabled: false },
@@ -8,11 +10,15 @@ export default defineNuxtConfig({
       link: [{ rel: "icon", type: "image/x-icon", href: "/rifqi.jpg" }],
     },
   },
+  css: [
+    'primeicons/primeicons.css' // add PrimeIcons here
+  ],
   modules: [
     "@nuxtjs/tailwindcss",
     "shadcn-nuxt",
     "nuxt-icon",
     "@nuxtjs/google-fonts",
+    "@primevue/nuxt-module",
   ],
   googleFonts: {
     families: {
@@ -23,6 +29,20 @@ export default defineNuxtConfig({
       },
     },
     display: "swap",
+  },
+  primevue: {
+    options: {
+      ripple: true,
+      inputVariant: "filled",
+      theme: {
+        preset: Aura,
+        options: {
+          prefix: "p",
+          darkModeSelector: "system",
+          cssLayer: false,
+        },
+      },
+    },
   },
   shadcn: {
     prefix: "",
