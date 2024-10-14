@@ -2,7 +2,7 @@
 import Aura from "@primevue/themes/aura";
 
 export default defineNuxtConfig({
-  ssr: true,  
+  ssr: true,
   compatibilityDate: "2024-04-03",
   devtools: { enabled: false },
   app: {
@@ -18,6 +18,9 @@ export default defineNuxtConfig({
       ],
       link: [{ rel: "icon", type: "image/x-icon", href: "/rifqi.jpg" }],
     },
+  },
+  dir: {
+    static: "static",
   },
   css: ["primeicons/primeicons.css"],
   modules: [
