@@ -18,7 +18,7 @@
       </div>
 
       <div class="max-w-xl mx-auto bg-white p-8 rounded-lg shadow-lg">
-        <p class="mb-6 text-lg text-gray-900">Send me an email</p>
+        <p class="mb-6 text-lg">Send me an email</p>
         <form @submit.prevent="submitForm">
           <div class="mb-4">
             <label for="name" class="block text-sm font-medium text-gray-700"
@@ -28,8 +28,7 @@
               type="text"
               id="name"
               v-model="form.name"
-              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-              required
+              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-white text-black"
             />
           </div>
           <div class="mb-4">
@@ -40,8 +39,7 @@
               type="email"
               id="email"
               v-model="form.email"
-              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-              required
+              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-white text-black"
             />
           </div>
           <div class="mb-4">
@@ -52,18 +50,20 @@
               id="message"
               v-model="form.message"
               rows="4"
-              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-              required
-            ></textarea>
+              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 bg-white text-black"
+            >
+            </textarea>
           </div>
           <button
             type="submit"
-            class="w-full bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+            :disabled="isButtonDisabled"
+            class="w-full bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             Send
           </button>
         </form>
       </div>
+
       <Toaster />
     </div>
   </div>
@@ -81,6 +81,10 @@ const form = ref({
   name: "",
   email: "",
   message: "",
+});
+
+const isButtonDisabled = computed(() => {
+  return !form.value.name || !form.value.email || !form.value.message;
 });
 
 const submitForm = async () => {
@@ -142,9 +146,5 @@ const submitForm = async () => {
 
 .bg-center {
   background-position: center;
-}
-
-.bg-black {
-  background-color: black;
 }
 </style>
