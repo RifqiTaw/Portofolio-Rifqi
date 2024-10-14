@@ -18,7 +18,7 @@
           class="skill-card bg-white p-6 rounded-lg shadow-lg"
         >
           <template v-if="index !== 2">
-            <img
+            <NuxtImg
               :src="project.image"
               alt="Project 1 Image"
               class="w-full h-48 object-cover rounded-lg mb-4"
@@ -32,7 +32,7 @@
             <div
               class="relative h-full bg-gray-200 flex items-center justify-center"
             >
-              <img
+              <NuxtImg
                 :src="project.image"
                 alt="project image"
                 class="absolute inset-0 w-full h-full object-cover opacity-30"

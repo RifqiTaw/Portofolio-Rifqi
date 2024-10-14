@@ -1,8 +1,7 @@
 <template>
   <div class="relative flex flex-col items-center justify-center h-full">
-    <div class="relative w-1/3 bg-white p-4 shadow-lg rounded-lg">
-      <img
-        ref="image"
+    <div class="relative w-1/3 bg-white p-4 shadow-lg rounded-lg" ref="image">
+      <NuxtImg
         src="/images/foto-fullbody.jpg"
         alt="Full Body Image"
         class="rounded-lg max-h-96 w-full object-cover"

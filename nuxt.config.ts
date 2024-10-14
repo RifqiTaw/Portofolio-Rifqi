@@ -2,18 +2,26 @@
 import Aura from "@primevue/themes/aura";
 
 export default defineNuxtConfig({
+  ssr: true,  
   compatibilityDate: "2024-04-03",
   devtools: { enabled: false },
   app: {
     head: {
-      title: "Rifqi Taufiqurrohman",
+      title: "Rifqi Taufiqurrohman - Frontend Developer",
+      meta: [
+        {
+          name: "description",
+          content:
+            "Portfolio of Rifqi Taufiqurrohman, showcasing skills and projects as a Frontend Developer at Telkom Foundation.",
+        },
+        { property: "og:image", content: "/images/foto-fullbody.jpg" },
+      ],
       link: [{ rel: "icon", type: "image/x-icon", href: "/rifqi.jpg" }],
     },
   },
-  css: [
-    'primeicons/primeicons.css' // add PrimeIcons here
-  ],
+  css: ["primeicons/primeicons.css"],
   modules: [
+    "@nuxt/image",
     "@nuxtjs/tailwindcss",
     "shadcn-nuxt",
     "nuxt-icon",

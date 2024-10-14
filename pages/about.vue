@@ -29,7 +29,7 @@
         </div>
         <!-- Right Column: Image -->
         <div class="right-slide text-center md:text-left md:w-1/2">
-          <img
+          <NuxtImg
             src="/images/2.jpeg"
             alt="Placeholder Image"
             class="w-full h-auto rounded-lg shadow-lg"
