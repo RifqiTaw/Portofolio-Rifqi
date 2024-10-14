@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /private/ // mencegah crawling di folder private
+Allow: / // memperbolehkan crawling di seluruh situs

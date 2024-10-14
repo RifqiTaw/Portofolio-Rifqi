@@ -1,4 +1,3 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
 import Aura from "@primevue/themes/aura";
 
 export default defineNuxtConfig({
@@ -14,11 +13,21 @@ export default defineNuxtConfig({
           content:
             "Portfolio of Rifqi Taufiqurrohman, showcasing skills and projects as a Frontend Developer at Telkom Foundation.",
         },
+        {
+          property: "og:title",
+          content: "Rifqi Taufiqurrohman - Frontend Developer",
+        },
+        {
+          property: "og:description",
+          content: "Explore my projects and skills.",
+        },
+        { property: "og:url", content: "https://rifqitaw.vercel.app/" },
         { property: "og:image", content: "/images/foto-fullbody.jpg" },
       ],
-      link: [{ rel: "icon", type: "image/x-icon", href: "/rifqi.jpg" }],
+      link: [{ rel: "icon", type: "image/x-icon", href: "/images/rifqi.jpg" }],
     },
   },
+
   dir: {
     static: "static",
   },
@@ -30,7 +39,12 @@ export default defineNuxtConfig({
     "nuxt-icon",
     "@nuxtjs/google-fonts",
     "@primevue/nuxt-module",
+    "@nuxtjs/sitemap",
   ],
+  sitemap: {
+    hostname: "https://rifqitaw.vercel.app/",
+    routes: ["/", "/about", "/project", "/contact", "/experience"],
+  },
   googleFonts: {
     families: {
       Montserrat: [400, 700],
