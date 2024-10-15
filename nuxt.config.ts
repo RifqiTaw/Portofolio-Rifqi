@@ -27,7 +27,6 @@ export default defineNuxtConfig({
       link: [{ rel: "icon", type: "image/x-icon", href: "/images/rifqi.jpg" }],
     },
   },
-
   dir: {
     static: "static",
   },
@@ -49,9 +48,7 @@ export default defineNuxtConfig({
     families: {
       Montserrat: [400, 700],
       Roboto: [100, 400, 500, 700],
-      families: {
-        Poppins: [400, 600, 700],
-      },
+      Poppins: [400, 600, 700],      
     },
     display: "swap",
   },

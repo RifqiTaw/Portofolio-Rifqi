@@ -33,7 +33,12 @@
                 Currently Working
               </div>
 
-              <h3 class="font-bold text-lg">{{ slotProps.item.title }}</h3>
+              <a
+                :href="slotProps.item.link"
+                target="_blank"
+                class="font-bold text-lg"
+                >{{ slotProps.item.title }}</a
+              >
               <h4 class="text-blue-600 font-semibold">
                 {{ slotProps.item.role }}
               </h4>
@@ -70,6 +75,7 @@ interface Event {
   date: string;
   title: string;
   role: string;
+  link: string;
   description: string;
   color?: string;
   icon?: string;
@@ -84,6 +90,7 @@ const events = ref<Event[]>([
     date: "2023-01-01",
     title: "Telkom Education Foundation - Bandung",
     role: "Frontend Developer",
+    link: "https://ypt.or.id/",
     description:
       "Responsible for frontend development of several internal applications.",
     color: "#007bff",
@@ -97,6 +104,7 @@ const events = ref<Event[]>([
     date: "2023-02-15",
     title: "PT. Pertamina EP Asset 4 Field Poleng - Surabaya",
     role: "Web Developer",
+    link: "https://pep.pertamina.com/",
     description:
       "Develop web applications for internal company and public projects.",
     color: "#28a745",
@@ -109,6 +117,7 @@ const events = ref<Event[]>([
   {
     date: "Coming Soon",
     title: "Next Role",
+    link: "#",
     role: "Coming Soon",
     description: "New exciting projects are on the way.",
     color: "#ffc107",

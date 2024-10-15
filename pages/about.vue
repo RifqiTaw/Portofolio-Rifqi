@@ -7,17 +7,28 @@
         <!-- Left Column: Text Content -->
         <div class="fade-slide text-center md:text-left md:w-1/2">
           <h1 class="text-4xl font-bold tracking-tight text-white sm:text-6xl">
-            about.
+            About Me.
           </h1>
           <span
             class="text-xl font-semibold tracking-tight text-gray-400 sm:text-2xl"
           >
-            I'm a Frontend Developer based in Bandung, Indonesia.
+            Hi, I'm Rifqi Taufiqurrohman, a passionate Frontend Developer based
+            in Bandung, Indonesia.
           </span>
           <p class="mt-6 text-lg leading-8 text-white">
-            Since 2022, I've enjoyed turning complex problems into simple,
-            beautiful and intuitive designs. When I'm not pushing pixels, you'll
-            find me cooking, gardening, or working out in the park.
+            Since 2022, I’ve been dedicated to crafting interactive,
+            user-friendly interfaces that solve complex challenges with clean
+            and efficient code.
+          </p>
+          <p class="mt-6 text-lg leading-8 text-white">
+            I specialize in building responsive web applications using modern
+            technologies like Vue.js, Nuxt.js, and Tailwind CSS, always striving
+            to create seamless user experiences. With a keen eye for design and
+            attention to detail, I turn ideas into engaging digital solutions
+            that not only look great but function flawlessly across all devices.
+          </p>
+          <p class="mt-6 text-lg leading-8 text-white">
+            Let’s build something amazing together!
           </p>
           <!-- Preview CV Button -->
           <button

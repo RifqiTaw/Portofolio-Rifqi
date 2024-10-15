@@ -3,18 +3,7 @@
     <div class="relative z-10 mx-auto max-w-7xl px-6">
       <div class="text-center mb-12">
         <h2 class="text-3xl font-bold tracking-tight text-white">Contact</h2>
-        <p class="mt-2 text-lg text-white">
-          Get in touch with me via social media or email.
-        </p>
-      </div>
-
-      <div class="flex justify-center gap-8 mb-12">
-        <a href="https://www.linkedin.com/in/rifqi-taufiqurrohman98/">
-          <Icon name="mdi:linkedin" style="color: white" size="30" />
-        </a>
-        <a href="https://www.instagram.com/rifqi_taw/">
-          <Icon name="mdi:instagram" style="color: white" size="30" />
-        </a>
+        <p class="mt-2 text-lg text-white">Get in touch with me via email.</p>
       </div>
 
       <div class="max-w-xl mx-auto bg-white p-8 rounded-lg shadow-lg">
