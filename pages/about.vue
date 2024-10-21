@@ -106,7 +106,10 @@
           v-for="(skill, index) in skills"
           :key="index"
         >
-          <Icon :name="skill.icon" class="h-20 w-20 mb-4 text-blue-500" />
+          <Icon
+            :name="skill.icon"
+            class="h-20 w-20 mb-4 text-blue-500 animate-pulse hover:skew-y-3"
+          />
           <h3 class="text-xl font-semibold text-gray-900">{{ skill.name }}</h3>
           <p class="mt-2 text-gray-600">{{ skill.description }}</p>
         </div>

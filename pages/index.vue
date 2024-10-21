@@ -9,7 +9,7 @@
     </div>
 
     <div class="absolute bottom-10 z-10 text-center">
-      <div class="bg-gray-900 bg-opacity-60 p-6 rounded-lg">
+      <div class="bg-gray-900 bg-opacity-60 p-6 rounded-lg backdrop-blur-sm">
         <h1 ref="headline" class="text-4xl font-bold text-white animate-typing">
           Frontend Developer
         </h1>
