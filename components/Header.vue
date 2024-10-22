@@ -84,7 +84,7 @@
   </nav>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import gsap from "gsap";
@@ -92,7 +92,7 @@ import gsap from "gsap";
 const route = useRoute();
 const navbar = ref(null);
 
-const isActive = (routePath) => {
+const isActive = (routePath: string) => {
   return route.path === routePath;
 };
 

@@ -100,7 +100,7 @@ interface project {
   company: string;
   link: string;
   website: string;
-  tags: string;
+  tags: string[];
   comingSoon: boolean;
 }
 
@@ -157,10 +157,11 @@ const projects = ref<project[]>([
     website: "https://github.com/RifqiTaw",
     tags: ["Bootstrap", "Vue.js"],
     comingSoon: true,
+    company: "",
   },
 ]);
 
-const getTagClass = (tag) => {
+const getTagClass = (tag: string) => {
   const tagClasses = {
     Nuxt: "bg-blue-100 text-blue-800",
     "Vue.js": "bg-gray-100 text-gray-800",
@@ -169,8 +170,11 @@ const getTagClass = (tag) => {
     "Tailwind CSS": "bg-indigo-100 text-indigo-800",
     Redux: "bg-red-100 text-red-800",
     Vite: "bg-purple-100 text-purple-800",
-  };
-  return tagClasses[tag] || "bg-gray-100 text-gray-800";
+  } as const;
+
+  return (
+    tagClasses[tag as keyof typeof tagClasses] || "bg-gray-100 text-gray-800"
+  );
 };
 </script>
 <style scoped></style>

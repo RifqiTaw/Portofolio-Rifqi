@@ -27,12 +27,12 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { gsap } from "gsap";
 
-const image = ref(null);
-const headline = ref(null);
-const subheadline = ref(null);
+const image = ref<any>(null);
+const headline = ref<any>(null);
+const subheadline = ref<any>(null);
 
 onMounted(async () => {
   gsap.from(image.value, {
@@ -46,7 +46,6 @@ onMounted(async () => {
     text: "Frontend Developer",
     duration: 2.5,
     ease: "power1.inOut",
-    delay: 0.5,
   });
 
   gsap.from(subheadline.value, {
@@ -54,13 +53,12 @@ onMounted(async () => {
     y: 20,
     duration: 1.5,
     ease: "power2.out",
-    delay: 2,
   });
 });
 </script>
 
 <style scoped>
 .h-full {
-  height: calc(100vh - 200px); /* Take into account the footer's height */
+  height: calc(100vh - 200px);
 }
 </style>

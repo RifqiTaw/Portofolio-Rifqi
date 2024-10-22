@@ -19,45 +19,50 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import "primeicons/primeicons.css";
 import { ref, onMounted, nextTick } from "vue";
 import Header from "~/components/Header.vue";
 import Footer from "~/components/Footer.vue";
 import gsap from "gsap";
 
-const loading = ref(true);
-const loadingScreen = ref(null);
-const content = ref(null);
+const loading = ref<boolean>(true);
+const loadingScreen = ref<any>(null);
+const content = ref<any>(null);
 
 onMounted(async () => {
   await nextTick();
 
-  gsap
-    .timeline()
-    .fromTo(
-      ".loading-logo",
-      { opacity: 0, scale: 0.8 },
-      { opacity: 1, scale: 1.5, duration: 1.5, ease: "power4.inOut" }
-    )
-    .to(".loading-logo", {
-      scale: 1,
-      duration: 0.5,
-      ease: "power4.out",
-    })
-    .to(loadingScreen.value, {
-      opacity: 0,
-      duration: 1,
-      ease: "power2.inOut",
-      onComplete: () => {
-        loading.value = false;
-      },
-    });
+  const loadingAnimation = new Promise<void>((resolve) => {
+    gsap
+      .timeline()
+      .fromTo(
+        ".loading-logo",
+        { opacity: 0, scale: 0.8 },
+        { opacity: 1, scale: 1.5, duration: 1.5, ease: "power4.inOut" }
+      )
+      .to(".loading-logo", {
+        scale: 1,
+        duration: 0.5,
+        ease: "power4.out",
+      })
+      .to(loadingScreen.value, {
+        opacity: 0,
+        duration: 1,
+        ease: "power2.inOut",
+        onComplete: () => {
+          loading.value = false;
+          resolve();
+        },
+      });
+  });
+
+  await loadingAnimation;
 
   gsap.fromTo(
     content.value,
     { opacity: 0 },
-    { opacity: 1, duration: 1.5, ease: "power2.out", delay: 0.5 }
+    { opacity: 1, duration: 1.5, ease: "power2.out" }
   );
 
   gsap.fromTo(

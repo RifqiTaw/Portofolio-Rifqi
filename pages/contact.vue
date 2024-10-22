@@ -58,7 +58,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from "vue";
 import emailjs from "emailjs-com";
 import Toaster from "@/components/ui/toast/Toaster.vue";
@@ -96,7 +96,7 @@ const submitForm = async () => {
     toast({
       title: "Success",
       description: "Email sent successfully!",
-      variant: "success",
+      variant: "default",
       style: {
         backgroundColor: "#4caf50",
         color: "#fff",
@@ -107,7 +107,7 @@ const submitForm = async () => {
     toast({
       title: "Error",
       description: "Failed to send email. Please try again.",
-      variant: "error",
+      variant: "default",
     });
   }
 };
