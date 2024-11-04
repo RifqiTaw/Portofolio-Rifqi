@@ -127,6 +127,17 @@ const projects = ref<project[]>([
     comingSoon: false,
   },
   {
+    title: "News Portal New York Times",
+    description:
+      "The New York Times (NYT) is one of the most prominent and influential news portals globally, known for its comprehensive coverage, investigative journalism, and digital innovation.",
+    image: "/images/portal.png",
+    company: "Dummy Project",
+    link: "https://github.com/RifqiTaw/portal-news",
+    website: "https://portal-news-psi.vercel.app/",
+    tags: ["Angular", "Tailwind CSS", "Rxjs"],
+    comingSoon: false,
+  },
+  {
     title:
       "Determining Bandung Raya Tourism Routes Using the Cheapest Insertion Heuristic Algorithm",
     description:
@@ -136,17 +147,6 @@ const projects = ref<project[]>([
     link: "https://github.com/RifqiTaw/travelrs",
     website: "#",
     tags: ["Codeigniter", "Python", "PHP"],
-    comingSoon: false,
-  },
-  {
-    title: "DIGITS Telkom Schools - Registration Module",
-    description:
-      "The DigiTS application is an application used by YPT to carry out continuous development of the quality of education delivery which is adjusted to the internal and external conditions of the Telkom Education Foundation.",
-    image: "/images/login-portal.png",
-    company: "Telkom Education Foundation",
-    link: "#",
-    website: "https://digits.telkomschools.sch.id/",
-    tags: ["Nuxt", "Vue.js", "Bootstrap"],
     comingSoon: false,
   },
   {
