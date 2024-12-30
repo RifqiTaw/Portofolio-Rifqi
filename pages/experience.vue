@@ -103,7 +103,7 @@ const events = ref<Event[]>([
   {
     date: "2023-02-15",
     title: "PT. Pertamina EP Asset 4 Field Poleng - Surabaya",
-    role: "Web Developer",
+    role: "Unit ICT(Information & Communication Technology)",
     link: "https://pep.pertamina.com/",
     description:
       "Develop web applications for internal company and public projects.",
@@ -112,17 +112,6 @@ const events = ref<Event[]>([
     image: "logo-pertamina.png",
     startDate: "June 2019",
     endDate: "August 2019",
-    current: false,
-  },
-  {
-    date: "Coming Soon",
-    title: "Next Role",
-    link: "#",
-    role: "Coming Soon",
-    description: "New exciting projects are on the way.",
-    color: "#ffc107",
-    icon: "pi pi-star",
-    startDate: "TBD",
     current: false,
   },
 ]);
