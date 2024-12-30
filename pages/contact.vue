@@ -1,5 +1,5 @@
 <template>
-  <div class="relative py-16 pt-32">
+  <div class="relative py-16">
     <div class="relative z-10 mx-auto max-w-7xl px-6">
       <div class="text-center mb-12">
         <h2 class="text-3xl font-bold tracking-tight text-white">Contact</h2>
