@@ -16,11 +16,24 @@
           class="bg-white p-6 rounded-lg shadow-lg flex flex-col h-full"
         >
           <template v-if="!project.comingSoon">
-            <NuxtImg
-              :src="project.image"
-              alt="Project Image"
-              class="w-full h-48 object-cover rounded-lg mb-4"
-            />
+            <div class="relative">
+              <NuxtImg
+                :src="project.image"
+                alt="Project Image"
+                class="w-full h-48 object-cover rounded-lg mb-4"
+                placeholder="blur"
+                lazy
+              />
+              <!-- Overlay for the first project -->
+              <div
+                v-if="index === 0"
+                class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center rounded-lg"
+              >
+                <span class="text-white text-xl font-semibold"
+                  >Confidential</span
+                >
+              </div>
+            </div>
 
             <!-- Content Section -->
             <div class="flex flex-col flex-grow">
@@ -68,6 +81,8 @@
                 :src="project.image"
                 alt="Project Image"
                 class="absolute inset-0 w-full h-full object-cover opacity-30"
+                placeholder="blur"
+                lazy
               />
               <div class="relative z-10 text-center">
                 <h2 class="text-3xl font-bold text-white">Coming Soon</h2>
@@ -111,7 +126,7 @@ const projects = ref<project[]>([
       "The DigiTS application is an application used by YPT to carry out continuous development of the quality of education delivery which is adjusted to the internal and external conditions of the Telkom Education Foundation.",
     image: "/images/login-portal.png",
     company: "Telkom Education Foundation",
-    link: "#",
+    link: "",
     website: "https://digits.telkomschools.sch.id/",
     tags: ["Nuxt", "Vue.js", "Bootstrap"],
     comingSoon: false,
@@ -142,10 +157,10 @@ const projects = ref<project[]>([
       "Determining Bandung Raya Tourism Routes Using the Cheapest Insertion Heuristic Algorithm",
     description:
       "The application aims to make it easier for tourists to determine tourist routes based on several categories such as costs, rates and the number of selected tourist attractions.",
-    image: "/images/login-portal.png",
+    image: "/images/travelrs.png",
     company: "S1 thesis application",
     link: "https://github.com/RifqiTaw/travelrs",
-    website: "#",
+    website: "",
     tags: ["Codeigniter", "Python", "PHP"],
     comingSoon: false,
   },
