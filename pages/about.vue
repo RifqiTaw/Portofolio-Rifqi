@@ -2,7 +2,7 @@
   <div>
     <div class="relative">
       <div
-        class="mx-auto max-w-7xl pt-40 py-6 flex flex-col md:flex-row items-center justify-between gap-10 p-4"
+        class="mx-auto max-w-7xl pt-10 py-6 flex flex-col md:flex-row items-center justify-between gap-10 p-4"
       >
         <!-- Left Column: Text Content -->
         <div class="fade-slide text-center md:text-left md:w-1/2">
@@ -52,8 +52,11 @@
     <div
       v-if="isModalOpen"
       class="fixed inset-0 z-30 flex items-center justify-center bg-black bg-opacity-50"
+      @click.self="closeModal"
     >
-      <div class="bg-gray-900 rounded-lg shadow-lg p-6 max-w-4xl w-full">
+      <div
+        class="bg-gray-900 rounded-lg shadow-lg p-6 max-w-4xl w-full overflow-y-auto max-h-[90vh]"
+      >
         <div class="flex justify-between items-center mb-4">
           <h2 class="text-xl font-bold text-white">Preview CV</h2>
           <button @click="closeModal" class="text-white hover:text-gray-300">
@@ -66,8 +69,8 @@
           frameborder="0"
         ></iframe>
         <div class="flex justify-end mt-4">
-          <a
-            href="/file/cv.pdf"
+          <NuxtLink
+            to="/file/cv.pdf"
             download
             class="px-4 py-2 bg-green-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 flex items-center"
           >
@@ -86,7 +89,7 @@
               />
             </svg>
             Unduh CV
-          </a>
+          </NuxtLink>
         </div>
       </div>
     </div>
@@ -94,7 +97,7 @@
   <!-- Section 2: My Skills -->
   <div class="py-16 skill-card">
     <div class="mx-auto max-w-7xl px-6">
-      <h2 class="text-3xl font-bold tracking-tight text-white text-center">
+      <h2 class="text-3xl font-bold tracking-tight text-white text-center pb-10">
         Tech Stack & Skills
       </h2>
       <div
