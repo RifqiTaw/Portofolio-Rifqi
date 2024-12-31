@@ -22,7 +22,6 @@
                 alt="Project Image"
                 class="w-full h-48 object-cover rounded-lg mb-4"
                 placeholder="blur"
-                lazy
               />
               <!-- Overlay for the first project -->
               <div
@@ -30,7 +29,7 @@
                 class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center rounded-lg"
               >
                 <span class="text-white text-xl font-semibold"
-                  >Confidential</span
+                  >Confidential Content</span
                 >
               </div>
             </div>
@@ -60,13 +59,20 @@
                 <nuxt-link
                   :to="project.link"
                   target="_blank"
-                  class="text-blue-500 hover:text-blue-700 font-semibold"
+                  :class="[
+                    { 'text-gray-400 cursor-not-allowed': !project.link },
+                    'text-blue-500 hover:text-blue-700 font-semibold',
+                  ]"
+                  :aria-disabled="!project.link"
                   >GitHub</nuxt-link
                 >
                 <nuxt-link
                   :to="project.website"
                   target="_blank"
-                  class="text-blue-500 hover:text-blue-700 font-semibold"
+                  :class="[
+                    { 'text-gray-400 cursor-not-allowed': !project.website },
+                    'text-blue-500 hover:text-blue-700 font-semibold',
+                  ]"
                   >Visit Website</nuxt-link
                 >
               </div>
@@ -82,7 +88,6 @@
                 alt="Project Image"
                 class="absolute inset-0 w-full h-full object-cover opacity-30"
                 placeholder="blur"
-                lazy
               />
               <div class="relative z-10 text-center">
                 <h2 class="text-3xl font-bold text-white">Coming Soon</h2>
@@ -127,7 +132,7 @@ const projects = ref<project[]>([
     image: "/images/login-portal.png",
     company: "Telkom Education Foundation",
     link: "",
-    website: "https://digits.telkomschools.sch.id/",
+    website: "",
     tags: ["Nuxt", "Vue.js", "Bootstrap"],
     comingSoon: false,
   },
@@ -137,7 +142,7 @@ const projects = ref<project[]>([
     image: "/images/xiaomi.png",
     company: "Xiaomi Corporation",
     link: "https://github.com/RifqiTaw/fs-xiaomi-phone",
-    website: "https://github.com/RifqiTaw",
+    website: "",
     tags: ["React JS", "Tailwind CSS", "Redux", "Vite"],
     comingSoon: false,
   },
