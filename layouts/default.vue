@@ -1,14 +1,14 @@
 <template>
-  <div class="flex flex-col min-h-screen">
+  <div class="flex flex-col min-h-screen background-image">
     <div v-show="loading" class="loading-screen" ref="loadingScreen">
       <h1 class="loading-logo">Rifqi Taw</h1>
     </div>
-    <div v-show="!loading" class="content" ref="content">
+    <div v-show="!loading" class="flex flex-col flex-1" ref="content">
       <Header />
       <main class="flex-1">
         <NuxtPage />
       </main>
-      <Footer />
+
       <!-- Scroll Indicator -->
       <div class="scroll-indicator fixed bottom-5 right-5">
         <div ref="scrollIcon" class="mouse-icon">
@@ -16,6 +16,7 @@
         </div>
       </div>
     </div>
+    <Footer  />
   </div>
 </template>
 
@@ -109,14 +110,18 @@ onMounted(async () => {
   left: 50%;
   transform: translateX(-50%);
 }
-.content {
+
+.background-image {
   background-image: url("/images/background.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-color: #0d1b2a !important;
-  opacity: 0;
+  opacity: 1;
+  min-height: 100vh;
+  height: 100%;
 }
+
 .loading-screen {
   position: fixed;
   top: 0;
