@@ -1,126 +1,3 @@
-<template>
-  <div>
-    <div class="relative">
-      <div
-        class="mx-auto max-w-7xl pt-10 py-6 flex flex-col md:flex-row items-center justify-between gap-10 p-4"
-      >
-        <!-- Left Column: Text Content -->
-        <div class="fade-slide text-center md:text-left md:w-1/2">
-          <h1 class="text-4xl font-bold tracking-tight text-white sm:text-6xl">
-            About Me.
-          </h1>
-          <span
-            class="text-xl font-semibold tracking-tight text-gray-400 sm:text-2xl"
-          >
-            Hi, I'm Rifqi Taufiqurrohman, a passionate Frontend Developer based
-            in Bandung, Indonesia.
-          </span>
-          <p class="mt-6 text-lg leading-8 text-white">
-            Since 2022, I’ve been dedicated to crafting interactive,
-            user-friendly interfaces that solve complex challenges with clean
-            and efficient code.
-          </p>
-          <p class="mt-6 text-lg leading-8 text-white">
-            I specialize in building responsive web applications using modern
-            technologies like Vue.js, Nuxt.js, and Tailwind CSS, always striving
-            to create seamless user experiences. With a keen eye for design and
-            attention to detail, I turn ideas into engaging digital solutions
-            that not only look great but function flawlessly across all devices.
-          </p>
-          <p class="mt-6 text-lg leading-8 text-white">
-            Let’s build something amazing together!
-          </p>
-          <!-- Preview CV Button -->
-          <button
-            @click="openModal"
-            class="mt-4 px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700"
-          >
-            Preview CV
-          </button>
-        </div>
-        <!-- Right Column: Image -->
-        <div class="right-slide text-center md:text-left md:w-1/2">
-          <NuxtImg
-            src="/images/2.jpeg"
-            alt="Placeholder Image"
-            class="w-full h-auto rounded-lg shadow-lg"
-          />
-        </div>
-      </div>
-    </div>
-    <!-- Modal for CV Preview -->
-    <div
-      v-if="isModalOpen"
-      class="fixed inset-0 z-30 flex items-center justify-center bg-black bg-opacity-50"
-      @click.self="closeModal"
-    >
-      <div
-        class="bg-gray-900 rounded-lg shadow-lg p-6 max-w-4xl w-full overflow-y-auto max-h-[90vh]"
-      >
-        <div class="flex justify-between items-center mb-4">
-          <h2 class="text-xl font-bold text-white">Preview CV</h2>
-          <button @click="closeModal" class="text-white hover:text-gray-300">
-            ✕
-          </button>
-        </div>
-        <iframe
-          src="/file/cv.pdf"
-          class="w-full h-[600px] border-none rounded-lg"
-          frameborder="0"
-        ></iframe>
-        <div class="flex justify-end mt-4">
-          <NuxtLink
-            to="/file/cv.pdf"
-            download
-            class="px-4 py-2 bg-green-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 flex items-center"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="w-5 h-5 mr-2"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25V9m10.5 6.75L12 21l-6.75-6.75M12 21V9"
-              />
-            </svg>
-            Unduh CV
-          </NuxtLink>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Section 2: My Skills -->
-  <div class="py-16 skill-card">
-    <div class="mx-auto max-w-7xl px-6">
-      <h2 class="text-3xl font-bold tracking-tight text-white text-center pb-10">
-        Tech Stack & Skills
-      </h2>
-      <div
-        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
-      >
-        <!-- Skill Cards -->
-        <div
-          class="skill-card bg-white p-6 rounded-lg shadow-lg flex flex-col items-center text-center transform transition-transform duration-300 hover:scale-105"
-          v-for="(skill, index) in skills"
-          :key="index"
-        >
-          <Icon
-            :name="skill.icon"
-            class="h-20 w-20 mb-4 text-blue-500 animate-pulse hover:skew-y-3"
-          />
-          <h3 class="text-xl font-semibold text-gray-900">{{ skill.name }}</h3>
-          <p class="mt-2 text-gray-600">{{ skill.description }}</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</template>
-
 <script setup lang="ts">
 import { ref } from "vue";
 import { gsap } from "gsap";
@@ -136,6 +13,16 @@ const openModal = () => {
 
 const closeModal = () => {
   isModalOpen.value = false;
+};
+
+const defaultSkillIcon = "lucide:code-2";
+
+const resolveSkillIcon = (icon?: string) => {
+  if (!icon) {
+    return defaultSkillIcon;
+  }
+
+  return icon;
 };
 
 onMounted(() => {
@@ -209,14 +96,34 @@ const skills = [
     icon: "logos:vue",
   },
   {
+    name: "React",
+    description: "Develop dynamic and interactive web experiences.",
+    icon: "logos:react",
+  },
+  {
+    name: "Next.js",
+    description: "Build scalable and high-performance web apps.",
+    icon: "logos:nextjs-icon",
+  },
+  {
+    name: "Angular",
+    description: "Create reactive user interfaces efficiently.",
+    icon: "logos:angular-icon",
+  },
+  {
     name: "Pinia - State Management",
     description: "Create reactive user interfaces efficiently.",
     icon: "logos:pinia",
   },
   {
-    name: "React",
-    description: "Develop dynamic and interactive web experiences.",
-    icon: "logos:react",
+    name: "Redux - State Management",
+    description: "Create reactive user interfaces efficiently.",
+    icon: "logos:redux",
+  },
+  {
+    name: "Zustand - State Management",
+    description: "Create reactive user interfaces efficiently.",
+    icon: "devicon:zustand",
   },
   {
     name: "JavaScript",
@@ -245,6 +152,123 @@ const skills = [
   },
 ];
 </script>
+
+<template>
+  <div>
+    <div class="relative">
+      <div
+        class="mx-auto max-w-7xl pt-10 py-6 flex flex-col md:flex-row items-center justify-between gap-10 p-4"
+      >
+        <!-- Left Column: Text Content -->
+        <div class="fade-slide text-center md:text-left md:w-1/2">
+          <h1 class="text-4xl font-bold tracking-tight text-white sm:text-6xl">
+            About Me.
+          </h1>
+          <span
+            class="text-xl font-semibold tracking-tight text-gray-400 sm:text-2xl"
+          >
+            Hi, I'm Rifqi Taufiqurrohman, a passionate Frontend Developer based
+            in Bali, Indonesia.
+          </span>
+          <p class="mt-6 text-lg leading-8 text-white">
+            Since 2022, I’ve been dedicated to crafting interactive,
+            user-friendly interfaces that solve complex challenges with clean
+            and efficient code.
+          </p>
+          <p class="mt-6 text-lg leading-8 text-white">
+            I specialize in building responsive web applications using modern
+            technologies like Vue.js, Nuxt.js, and Tailwind CSS, always striving
+            to create seamless user experiences. With a keen eye for design and
+            attention to detail, I turn ideas into engaging digital solutions
+            that not only look great but function flawlessly across all devices.
+          </p>
+          <p class="mt-6 text-lg leading-8 text-white">
+            Let’s build something amazing together!
+          </p>
+          <!-- Preview CV Button -->
+          <button
+            @click="openModal"
+            class="mt-4 px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700"
+          >
+            Preview CV
+          </button>
+        </div>
+        <!-- Right Column: Image -->
+        <div class="right-slide text-center md:text-left md:w-1/2">
+          <NuxtImg
+            src="/images/2.jpeg"
+            alt="Placeholder Image"
+            class="w-full h-auto rounded-lg shadow-lg"
+          />
+        </div>
+      </div>
+    </div>
+    <!-- Modal for CV Preview -->
+    <div
+      v-if="isModalOpen"
+      class="fixed inset-0 z-30 flex items-center justify-center bg-black bg-opacity-50"
+      @click.self="closeModal"
+    >
+      <div
+        class="bg-gray-900 rounded-lg shadow-lg p-6 max-w-4xl w-full overflow-y-auto max-h-[90vh]"
+      >
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-xl font-bold text-white">Preview CV</h2>
+          <button
+            @click="closeModal"
+            class="text-white hover:text-gray-300"
+            aria-label="Close modal"
+          >
+            <Icon name="lucide:x" class="h-5 w-5" aria-hidden="true" />
+          </button>
+        </div>
+        <iframe
+          src="/file/cv.pdf"
+          class="w-full h-[600px] border-none rounded-lg"
+          frameborder="0"
+        ></iframe>
+        <div class="flex justify-end mt-4">
+          <NuxtLink
+            to="/file/cv.pdf"
+            download
+            class="px-4 py-2 bg-green-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 flex items-center gap-2"
+          >
+            <Icon name="lucide:download" class="h-5 w-5" aria-hidden="true" />
+            Unduh CV
+          </NuxtLink>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Section 2: My Skills -->
+  <div class="py-16 skill-card">
+    <div class="mx-auto max-w-7xl px-6">
+      <h2
+        class="text-3xl font-bold tracking-tight text-white text-center pb-10"
+      >
+        Tech Stack & Skills
+      </h2>
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
+      >
+        <!-- Skill Cards -->
+        <div
+          class="skill-card bg-white p-6 rounded-lg shadow-lg flex flex-col items-center text-center transform transition-transform duration-300 hover:scale-105"
+          v-for="(skill, index) in skills"
+          :key="index"
+        >
+          <Icon
+            :name="resolveSkillIcon(skill.icon)"
+            class="h-20 w-20 mb-4 text-blue-500 animate-pulse hover:skew-y-3"
+          />
+          <h3 class="text-xl font-semibold text-gray-900">{{ skill.name }}</h3>
+          <p class="mt-2 text-gray-600">{{ skill.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
 <style scoped>
 .bg-white {
   background-color: #ffffff;
