@@ -1,25 +1,3 @@
-<template>
-  <div class="flex flex-col min-h-screen background-image">
-    <div v-show="loading" class="loading-screen" ref="loadingScreen">
-      <h1 class="loading-logo">Rifqi Taw</h1>
-    </div>
-    <div v-show="!loading" class="flex flex-col flex-1" ref="content">
-      <Header />
-      <main class="flex-1">
-        <NuxtPage />
-      </main>
-
-      <!-- Scroll Indicator -->
-      <div class="scroll-indicator fixed bottom-5 right-5">
-        <div ref="scrollIcon" class="mouse-icon">
-          <span class="scroll-wheel"></span>
-        </div>
-      </div>
-    </div>
-    <Footer  />
-  </div>
-</template>
-
 <script setup lang="ts">
 import "primeicons/primeicons.css";
 import { ref, onMounted, nextTick } from "vue";
@@ -40,7 +18,7 @@ onMounted(async () => {
       .fromTo(
         ".loading-logo",
         { opacity: 0, scale: 0.8 },
-        { opacity: 1, scale: 1.5, duration: 1.5, ease: "power4.inOut" }
+        { opacity: 1, scale: 1.5, duration: 1.5, ease: "power4.inOut" },
       )
       .to(".loading-logo", {
         scale: 1,
@@ -63,7 +41,7 @@ onMounted(async () => {
   gsap.fromTo(
     content.value,
     { opacity: 0 },
-    { opacity: 1, duration: 1.5, ease: "power2.out" }
+    { opacity: 1, duration: 1.5, ease: "power2.out" },
   );
 
   gsap.fromTo(
@@ -75,10 +53,34 @@ onMounted(async () => {
       repeat: -1,
       duration: 1,
       ease: "power2.inOut",
-    }
+    },
   );
 });
 </script>
+
+<template>
+  <div class="flex flex-col min-h-screen background-image">
+    <div v-show="loading" class="loading-screen" ref="loadingScreen">
+      <h1 class="loading-logo">Rifqi Taw</h1>
+    </div>
+    <template v-show="!loading">
+      <div class="flex flex-col flex-1" ref="content">
+        <Header />
+        <main class="flex-1">
+          <NuxtPage />
+        </main>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator fixed bottom-5 right-5">
+          <div ref="scrollIcon" class="mouse-icon">
+            <span class="scroll-wheel"></span>
+          </div>
+        </div>
+      </div>
+      <Footer />
+    </template>
+  </div>
+</template>
 
 <style scoped>
 .mouse-icon {
