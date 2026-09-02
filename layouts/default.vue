@@ -1,19 +1,19 @@
 <script setup lang="ts">
-import "primeicons/primeicons.css";
-import { ref, onMounted, nextTick } from "vue";
-import Header from "~/components/Header.vue";
-import Footer from "~/components/Footer.vue";
 import gsap from "gsap";
 
 const loading = ref<boolean>(true);
-const loadingScreen = ref<any>(null);
-const content = ref<any>(null);
+const loadingScreen = ref<HTMLElement | null>(null);
+const content = ref<HTMLElement | null>(null);
+
+let timeline: gsap.core.Timeline | null = null;
+let contentTween: gsap.core.Tween | null = null;
+let scrollTween: gsap.core.Tween | null = null;
 
 onMounted(async () => {
   await nextTick();
 
   const loadingAnimation = new Promise<void>((resolve) => {
-    gsap
+    timeline = gsap
       .timeline()
       .fromTo(
         ".loading-logo",
@@ -38,13 +38,13 @@ onMounted(async () => {
 
   await loadingAnimation;
 
-  gsap.fromTo(
+  contentTween = gsap.fromTo(
     content.value,
     { opacity: 0 },
     { opacity: 1, duration: 1.5, ease: "power2.out" },
   );
 
-  gsap.fromTo(
+  scrollTween = gsap.fromTo(
     ".scroll-wheel",
     { y: 0, opacity: 1 },
     {
@@ -56,6 +56,12 @@ onMounted(async () => {
     },
   );
 });
+
+onUnmounted(() => {
+  timeline?.kill();
+  contentTween?.kill();
+  scrollTween?.kill();
+});
 </script>
 
 <template>
@@ -63,22 +69,21 @@ onMounted(async () => {
     <div v-show="loading" class="loading-screen" ref="loadingScreen">
       <h1 class="loading-logo">Rifqi Taw</h1>
     </div>
-    <template v-show="!loading">
-      <div class="flex flex-col flex-1" ref="content">
-        <Header />
-        <main class="flex-1">
-          <NuxtPage />
-        </main>
 
-        <!-- Scroll Indicator -->
-        <div class="scroll-indicator fixed bottom-5 right-5">
-          <div ref="scrollIcon" class="mouse-icon">
-            <span class="scroll-wheel"></span>
-          </div>
+    <div class="flex flex-col flex-1" ref="content">
+      <Header />
+      <main class="flex-1">
+        <slot />
+      </main>
+
+      <!-- Scroll Indicator -->
+      <div class="scroll-indicator fixed bottom-5 right-5">
+        <div ref="scrollIcon" class="mouse-icon">
+          <span class="scroll-wheel"></span>
         </div>
       </div>
-      <Footer />
-    </template>
+    </div>
+    <Footer />
   </div>
 </template>
 

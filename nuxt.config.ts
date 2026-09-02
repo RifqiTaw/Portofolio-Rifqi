@@ -5,21 +5,23 @@ export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
   devtools: { enabled: false },
   app: {
+    pageTransition: { name: "page", mode: "out-in" },
+    layoutTransition: { name: "layout", mode: "out-in" },
     head: {
-      title: "Rifqi Taufiqurrohman - Frontend Developer",
+      title: "Rifqi Taufiqurrohman - Fullstack Developer",
       meta: [
         {
           name: "description",
           content:
-            "Portfolio of Rifqi Taufiqurrohman, showcasing skills and projects as a Frontend Developer at Telkom Foundation.",
+            "Portfolio of Rifqi Taufiqurrohman, a Fullstack Developer with a frontend focus — Vue, Nuxt, React, Node.js, Laravel, MySQL, and PostgreSQL.",
         },
         {
           property: "og:title",
-          content: "Rifqi Taufiqurrohman - Frontend Developer",
+          content: "Rifqi Taufiqurrohman - Fullstack Developer",
         },
         {
           property: "og:description",
-          content: "Explore my projects and skills.",
+          content: "Explore my projects, services, and skills.",
         },
         { property: "og:url", content: "https://rifqitaw.vercel.app/" },
         { property: "og:image", content: "/images/foto-fullbody.jpg" },
@@ -42,7 +44,14 @@ export default defineNuxtConfig({
   ],
   sitemap: {
     hostname: "https://rifqitaw.vercel.app/",
-    routes: ["/", "/about", "/project", "/contact", "/experience"],
+    routes: [
+      "/",
+      "/about",
+      "/project",
+      "/services",
+      "/contact",
+      "/experience",
+    ],
   },
   googleFonts: {
     families: {
