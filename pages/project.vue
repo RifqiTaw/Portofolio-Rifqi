@@ -17,6 +17,8 @@ interface Project {
   title: string;
   description: string;
   image: string;
+  screenshots?: { src: string; alt: string }[];
+  mobilePreview?: boolean;
   company: string;
   link: string;
   website: string;
@@ -88,6 +90,61 @@ const projects = ref<Project[]>([
 
   // ── Personal / practice projects ──────────────────────────────────────
   {
+    title: "Badminton Management — BadminHub",
+    description:
+      "A mobile-friendly badminton community management application with admin sign-in, community profiles, a player directory, events, and cashflow management. Built to help communities organize their activities in one place.",
+    image: "/images/badminton-community.jpeg",
+    screenshots: [
+      { src: "/images/badminton-login.jpeg", alt: "BadminHub mobile sign-in page" },
+      { src: "/images/badminton-community.jpeg", alt: "BadminHub community profile and player management" },
+    ],
+    mobilePreview: true,
+    company: "Personal Project",
+    link: "https://github.com/RifqiTaw/badminton-management",
+    website: "",
+    tags: ["Community Management", "Events", "Cashflow"],
+    type: "personal",
+    comingSoon: false,
+    confidential: false,
+    startDate: "",
+    endDate: null,
+  },
+  {
+    title: "Tournament Management — CourtControl",
+    description:
+      "A badminton tournament management platform featuring automatic draws and brackets, group and knockout stages, and live scoring. A public portal lets players and spectators follow schedules, standings, and match results without signing in.",
+    image: "/images/tournament-public.png",
+    screenshots: [
+      { src: "/images/tournament-public.png", alt: "CourtControl public tournament portal" },
+      { src: "/images/tournament-login.png", alt: "CourtControl tournament administrator sign-in page" },
+    ],
+    company: "Personal Project",
+    link: "https://github.com/RifqiTaw/tournament-badminton-management",
+    website: "https://tournament.badminhub.my.id/",
+    tags: ["Tournament Management", "Live Scores", "Brackets"],
+    type: "personal",
+    comingSoon: false,
+    confidential: false,
+    startDate: "",
+    endDate: null,
+  },
+  {
+    title:
+      "Determining Bandung Raya Tourism Routes Using the Cheapest Insertion Heuristic Algorithm",
+    description:
+      "The application aims to make it easier for tourists to determine tourist routes based on several categories such as costs, rates and the number of selected tourist attractions.",
+    image: "/images/travelrs.png",
+    company: "S1 Thesis Application",
+    link: "https://github.com/RifqiTaw/travelrs",
+    website: "",
+    tags: ["Codeigniter", "Python", "PHP"],
+    type: "personal",
+    comingSoon: false,
+    confidential: false,
+    startDate: "2020-12-01",
+    endDate: "2021-01-01",
+  },
+  {
     title: "Xiaomi Website Indonesia",
     description: "Clone xiaomi website indonesia mi.co.id (only phone).",
     image: "/images/xiaomi.png",
@@ -115,56 +172,7 @@ const projects = ref<Project[]>([
     confidential: false,
     startDate: "2023-04-01",
     endDate: "2023-05-01",
-  },
-  {
-    title:
-      "Determining Bandung Raya Tourism Routes Using the Cheapest Insertion Heuristic Algorithm",
-    description:
-      "The application aims to make it easier for tourists to determine tourist routes based on several categories such as costs, rates and the number of selected tourist attractions.",
-    image: "/images/travelrs.png",
-    company: "S1 Thesis Application",
-    link: "https://github.com/RifqiTaw/travelrs",
-    website: "",
-    tags: ["Codeigniter", "Python", "PHP"],
-    type: "personal",
-    comingSoon: false,
-    confidential: false,
-    startDate: "2020-12-01",
-    endDate: "2021-01-01",
-  },
-  // TODO: isi `link` / `website` / `image` begitu repo & demo-nya siap.
-  {
-    title: "E-Commerce API with Payment Gateway",
-    description:
-      "A practice backend service covering product catalog, cart, and checkout, with Midtrans and Xendit as payment channels including webhook handling for transaction status updates.",
-    image: "",
-    company: "Practice Project",
-    link: "",
-    website: "",
-    tags: ["Express.js", "Node.js", "PostgreSQL", "Midtrans", "Xendit"],
-    type: "personal",
-    comingSoon: false,
-    confidential: false,
-    inProgress: true,
-    startDate: "2025-06-01",
-    endDate: null,
-  },
-  {
-    title: "Inventory & POS Dashboard",
-    description:
-      "A fullstack practice project: multi-role admin dashboard with stock management, transaction records, and sales reporting exportable to Excel and PDF.",
-    image: "",
-    company: "Practice Project",
-    link: "",
-    website: "",
-    tags: ["Laravel", "Vue.js", "MySQL", "Tailwind CSS"],
-    type: "personal",
-    comingSoon: false,
-    confidential: false,
-    inProgress: true,
-    startDate: "2025-08-01",
-    endDate: null,
-  },
+  },  
   {
     title: "More Projects Coming Soon",
     description: "New personal projects are on the way.",
@@ -417,7 +425,29 @@ onUnmounted(() => ctx?.revert());
             <template v-if="!project.comingSoon">
               <div class="relative mb-4">
                 <div
-                  v-if="!hasImage(project)"
+                  v-if="project.screenshots?.length"
+                  class="grid gap-3 rounded-lg bg-emerald-950 p-3 pt-10"
+                  :class="project.mobilePreview ? 'grid-cols-2' : 'grid-cols-1'"
+                >
+                  <a
+                    v-for="screenshot in project.screenshots"
+                    :key="screenshot.src"
+                    :href="screenshot.src"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="block overflow-hidden rounded-md outline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-emerald-300"
+                    :aria-label="`${screenshot.alt} (opens full image in a new tab)`"
+                  >
+                    <img
+                      :src="screenshot.src"
+                      :alt="screenshot.alt"
+                      loading="lazy"
+                      class="h-auto w-full object-contain"
+                    />
+                  </a>
+                </div>
+                <div
+                  v-else-if="!hasImage(project)"
                   class="flex h-48 w-full flex-col items-center justify-center gap-2 rounded-lg bg-gray-100 text-gray-400"
                 >
                   <Icon name="lucide:image-off" class="h-10 w-10" />
