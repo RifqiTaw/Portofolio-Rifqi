@@ -19,9 +19,11 @@ interface Project {
   image: string;
   screenshots?: { src: string; alt: string }[];
   mobilePreview?: boolean;
+  compactPreview?: boolean;
   company: string;
   link: string;
   website: string;
+  websites?: { label: string; url: string }[];
   tags: string[];
   type: ProjectType;
   comingSoon: boolean;
@@ -64,7 +66,11 @@ const projects = ref<Project[]>([
     image: "https://aw-advantage.com/wp-content/uploads/2025/01/Logo-AW-Advantage-1.webp",
     company: "AW Advantage",
     link: "https://github.com/Inikoo-Ltd/aiku",
-    website: "https://app.aiku.io/",
+    website: "",
+    websites: [
+      { label: "Admin", url: "https://app.aiku.io/" },
+      { label: "Customer", url: "https://www.ancientwisdom.biz/" },
+    ],
     tags: ["Laravel", "Inertia.js", "Tailwind CSS", "PrimeVue", "Pinia"],
     type: "work",
     comingSoon: false,
@@ -101,8 +107,8 @@ const projects = ref<Project[]>([
     mobilePreview: true,
     company: "Personal Project",
     link: "https://github.com/RifqiTaw/badminton-management",
-    website: "",
-    tags: ["Community Management", "Events", "Cashflow"],
+    website: "https://badminhub.my.id/trial",
+    tags: ["React Native", "Expo", "TypeScript", "Express.js", "PostgreSQL"],
     type: "personal",
     comingSoon: false,
     confidential: false,
@@ -121,7 +127,7 @@ const projects = ref<Project[]>([
     company: "Personal Project",
     link: "https://github.com/RifqiTaw/tournament-badminton-management",
     website: "https://tournament.badminhub.my.id/",
-    tags: ["Tournament Management", "Live Scores", "Brackets"],
+    tags: ["Next.js", "React", "TypeScript", "Express.js", "PostgreSQL"],
     type: "personal",
     comingSoon: false,
     confidential: false,
@@ -133,9 +139,14 @@ const projects = ref<Project[]>([
       "Determining Bandung Raya Tourism Routes Using the Cheapest Insertion Heuristic Algorithm",
     description:
       "The application aims to make it easier for tourists to determine tourist routes based on several categories such as costs, rates and the number of selected tourist attractions.",
-    image: "/images/travelrs.png",
+    image: "/images/travelrs-explore.png",
+    screenshots: [
+      { src: "/images/travelrs-explore.png", alt: "Wisata Planner explore page with Bandung attractions" },
+      { src: "/images/travelrs-trip.png", alt: "Wisata Planner two-day trip itinerary with route map" },
+    ],
+    compactPreview: true,
     company: "S1 Thesis Application",
-    link: "https://github.com/RifqiTaw/travelrs",
+    link: "https://github.com/RifqiTaw/bandung-trip-planner",
     website: "",
     tags: ["Codeigniter", "Python", "PHP"],
     type: "personal",
@@ -211,6 +222,11 @@ const getTagClass = (tag: string) => {
     "Vue.js": "bg-gray-100 text-gray-800",
     Bootstrap: "bg-yellow-100 text-yellow-800",
     "React JS": "bg-teal-100 text-teal-800",
+    React: "bg-teal-100 text-teal-800",
+    "Next.js": "bg-neutral-200 text-neutral-900",
+    "React Native": "bg-cyan-100 text-cyan-800",
+    Expo: "bg-slate-200 text-slate-800",
+    TypeScript: "bg-blue-100 text-blue-800",
     "Tailwind CSS": "bg-indigo-100 text-indigo-800",
     Redux: "bg-red-100 text-red-800",
     Vite: "bg-purple-100 text-purple-800",
@@ -357,7 +373,7 @@ onUnmounted(() => ctx?.revert());
                 </span>
               </div>
 
-              <div class="flex space-x-4 border-t pt-4">
+              <div class="flex flex-wrap gap-x-4 gap-y-2 border-t pt-4">
                 <NuxtLink
                   :to="project.link || '#'"
                   target="_blank"
@@ -371,7 +387,18 @@ onUnmounted(() => ctx?.revert());
                   :aria-disabled="!project.link"
                   >GitHub</NuxtLink
                 >
+                <template v-if="project.websites?.length">
+                  <NuxtLink
+                    v-for="site in project.websites"
+                    :key="site.url"
+                    :to="site.url"
+                    target="_blank"
+                    class="font-semibold text-blue-500 hover:text-blue-700"
+                    >{{ site.label }} Site</NuxtLink
+                  >
+                </template>
                 <NuxtLink
+                  v-else
                   :to="project.website || '#'"
                   target="_blank"
                   :class="
@@ -442,7 +469,14 @@ onUnmounted(() => ctx?.revert());
                       :src="screenshot.src"
                       :alt="screenshot.alt"
                       loading="lazy"
-                      class="h-auto w-full object-contain"
+                      :class="
+                        cn(
+                          'w-full',
+                          project.compactPreview
+                            ? 'h-28 object-cover object-top'
+                            : 'h-auto object-contain',
+                        )
+                      "
                     />
                   </a>
                 </div>
