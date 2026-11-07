@@ -2,83 +2,69 @@
 import gsap from "gsap";
 
 const loading = ref<boolean>(true);
+const canScroll = ref<boolean>(false);
+const introDone = useIntroDone();
 const loadingScreen = ref<HTMLElement | null>(null);
-const content = ref<HTMLElement | null>(null);
 
-let timeline: gsap.core.Timeline | null = null;
-let contentTween: gsap.core.Tween | null = null;
 let scrollTween: gsap.core.Tween | null = null;
+let resizeObserver: ResizeObserver | null = null;
 
-onMounted(async () => {
-  await nextTick();
+// The mouse hint only makes sense when there is actually something to scroll.
+const updateScrollable = () => {
+  canScroll.value =
+    document.documentElement.scrollHeight > window.innerHeight + 1;
+};
 
-  const loadingAnimation = new Promise<void>((resolve) => {
-    timeline = gsap
-      .timeline()
-      .fromTo(
-        ".loading-logo",
-        { opacity: 0, scale: 0.8 },
-        { opacity: 1, scale: 1.5, duration: 1.5, ease: "power4.inOut" },
-      )
-      .to(".loading-logo", {
-        scale: 1,
-        duration: 0.5,
-        ease: "power4.out",
-      })
-      .to(loadingScreen.value, {
-        opacity: 0,
-        duration: 1,
-        ease: "power2.inOut",
-        onComplete: () => {
-          loading.value = false;
-          resolve();
-        },
-      });
-  });
-
-  await loadingAnimation;
-
-  contentTween = gsap.fromTo(
-    content.value,
-    { opacity: 0 },
-    { opacity: 1, duration: 1.5, ease: "power2.out" },
-  );
+onMounted(() => {
+  // The intro runs on CSS keyframes from the first paint, so it never waits
+  // for hydration (on a slow connection that left a blank black screen).
+  // JS only listens for the end; if it already ended, this resolves at once.
+  const finish = () => {
+    loading.value = false;
+    introDone.value = true;
+  };
+  const anims = loadingScreen.value?.getAnimations() ?? [];
+  Promise.all(anims.map((a) => a.finished)).then(finish, finish);
 
   scrollTween = gsap.fromTo(
     ".scroll-wheel",
     { y: 0, opacity: 1 },
-    {
-      y: 10,
-      opacity: 0,
-      repeat: -1,
-      duration: 1,
-      ease: "power2.inOut",
-    },
+    { y: 10, opacity: 0, repeat: -1, duration: 1, ease: "power2.inOut" },
   );
+
+  // Body size changes on navigation, image loads, and viewport resizes.
+  resizeObserver = new ResizeObserver(updateScrollable);
+  resizeObserver.observe(document.body);
+  window.addEventListener("resize", updateScrollable, { passive: true });
+  updateScrollable();
 });
 
 onUnmounted(() => {
-  timeline?.kill();
-  contentTween?.kill();
   scrollTween?.kill();
+  resizeObserver?.disconnect();
+  window.removeEventListener("resize", updateScrollable);
 });
 </script>
 
 <template>
   <div class="flex flex-col min-h-screen background-image">
     <div v-show="loading" class="loading-screen" ref="loadingScreen">
-      <h1 class="loading-logo">Rifqi Taw</h1>
+      <p class="loading-logo" aria-hidden="true">Rifqi Taw</p>
     </div>
 
-    <div class="flex flex-col flex-1" ref="content">
+    <div class="flex flex-col flex-1">
       <Header />
-      <main class="flex-1">
+      <main class="flex flex-1 flex-col">
         <slot />
       </main>
 
-      <!-- Scroll Indicator -->
-      <div class="scroll-indicator fixed bottom-5 right-5">
-        <div ref="scrollIcon" class="mouse-icon">
+      <!-- Scroll Indicator (only when the page can scroll) -->
+      <div
+        v-show="canScroll"
+        class="scroll-indicator fixed bottom-5 right-5"
+        aria-hidden="true"
+      >
+        <div class="mouse-icon">
           <span class="scroll-wheel"></span>
         </div>
       </div>
@@ -140,15 +126,51 @@ onUnmounted(() => {
   align-items: center;
   justify-content: center;
   z-index: 1000;
+  /* 2s logo, then a 1s fade. `visibility` stops it blocking clicks at the end. */
+  animation: intro-out 1s ease-in-out 2s forwards;
 }
 .loading-logo {
   font-family: "Poppins", sans-serif;
-  font-size: 5rem;
+  font-size: clamp(2.5rem, 12vw, 5rem);
   font-weight: 700;
   background: linear-gradient(90deg, #005b43, #2b2c71);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-transform: uppercase;
-  opacity: 0;
+  animation: logo-in 2s both;
+}
+
+@keyframes logo-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+    animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+  }
+  75% {
+    opacity: 1;
+    transform: scale(1.5);
+    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes intro-out {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loading-screen {
+    animation-duration: 0.4s;
+    animation-delay: 0.6s;
+  }
+  .loading-logo {
+    animation: none;
+  }
 }
 </style>

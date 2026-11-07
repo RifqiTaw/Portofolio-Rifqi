@@ -1,3 +1,78 @@
+<script setup lang="ts">
+import emailjs from "@emailjs/browser";
+import Toaster from "@/components/ui/toast/Toaster.vue";
+import { useToast } from "~/components/ui/toast";
+
+useSeoMeta({
+  title: "Contact — Rifqi Taufiqurrohman",
+  description: "Get in touch with Rifqi Taufiqurrohman via email.",
+});
+
+const { toast } = useToast();
+const config = useRuntimeConfig().public;
+
+const form = ref({
+  name: "",
+  email: "",
+  message: "",
+});
+
+const isSending = ref(false);
+
+const isButtonDisabled = computed(() => {
+  return (
+    isSending.value ||
+    !form.value.name.trim() ||
+    !form.value.email.trim() ||
+    !form.value.message.trim()
+  );
+});
+
+const submitForm = async () => {
+  if (isButtonDisabled.value) return;
+  isSending.value = true;
+  try {
+    await emailjs.send(
+      String(config.emailjsServiceId),
+      String(config.emailjsTemplateId),
+      {
+        from_name: form.value.name,
+        from_email: form.value.email,
+        message: form.value.message,
+      },
+      { publicKey: String(config.emailjsPublicKey) }
+    );
+
+    form.value = { name: "", email: "", message: "" };
+
+    toast({
+      title: "Success",
+      description: "Email sent successfully!",
+      variant: "default",
+      style: {
+        backgroundColor: "#4caf50",
+        color: "#fff",
+      },
+    });
+  } catch (error) {
+    console.error("Failed to send email:", error);
+    // Laporkan ke server supaya muncul di Vercel Runtime Logs (fire-and-forget)
+    const { status, text } = (error ?? {}) as { status?: number; text?: string };
+    $fetch("/api/contact-error", {
+      method: "POST",
+      body: { status, text: text ?? String(error) },
+    }).catch(() => {});
+    toast({
+      title: "Error",
+      description: "Failed to send email. Please try again.",
+      variant: "default",
+    });
+  } finally {
+    isSending.value = false;
+  }
+};
+</script>
+
 <template>
   <div class="relative py-16">
     <div class="relative z-10 mx-auto max-w-7xl px-6">
@@ -48,7 +123,7 @@
             :disabled="isButtonDisabled"
             class="w-full bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Send
+            {{ isSending ? "Sending..." : "Send" }}
           </button>
         </form>
       </div>
@@ -57,61 +132,6 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import { ref } from "vue";
-import emailjs from "emailjs-com";
-import Toaster from "@/components/ui/toast/Toaster.vue";
-import { useToast } from "~/components/ui/toast";
-
-const { toast } = useToast();
-
-const form = ref({
-  name: "",
-  email: "",
-  message: "",
-});
-
-const isButtonDisabled = computed(() => {
-  return !form.value.name || !form.value.email || !form.value.message;
-});
-
-const submitForm = async () => {
-  try {
-    const serviceID = "service_ogvilhp";
-    const templateID = "template_3btjkre";
-    const userID = "ssBQZeElx9wEa00NL";
-
-    await emailjs.send(
-      serviceID,
-      templateID,
-      {
-        from_name: form.value.name,
-        from_email: form.value.email,
-        message: form.value.message,
-      },
-      userID
-    );
-
-    toast({
-      title: "Success",
-      description: "Email sent successfully!",
-      variant: "default",
-      style: {
-        backgroundColor: "#4caf50",
-        color: "#fff",
-      },
-    });
-  } catch (error) {
-    console.error("Failed to send email:", error);
-    toast({
-      title: "Error",
-      description: "Failed to send email. Please try again.",
-      variant: "default",
-    });
-  }
-};
-</script>
 
 <style scoped>
 .relative {

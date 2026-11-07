@@ -16,6 +16,12 @@ module.exports = {
     },
     extend: {
       colors: {
+        brand: {
+          DEFAULT: "#00E5FF",
+          hover: "#00C6FF",
+          gradientFrom: "#005b43",
+          gradientTo: "#2b2c71",
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

@@ -29,6 +29,14 @@ export default defineNuxtConfig({
       link: [{ rel: "icon", type: "image/x-icon", href: "/images/rifqi.jpg" }],
     },
   },
+  runtimeConfig: {
+    public: {
+      // Override via NUXT_PUBLIC_EMAILJS_* di .env / Vercel env vars
+      emailjsServiceId: "service_ogvilhp",
+      emailjsTemplateId: "template_3btjkre",
+      emailjsPublicKey: "ssBQZeElx9wEa00NL",
+    },
+  },
   dir: {
     static: "static",
   },
@@ -62,6 +70,14 @@ export default defineNuxtConfig({
     display: "swap",
   },
   primevue: {
+    // Only register what we use. With autoImport on, PrimeVue's resolver claims
+    // every matching tag name (ignoring `include`), which shadows shadcn-vue's
+    // <Button>/<Badge>/<Card> at runtime. autoImport: false makes the module
+    // register just the components listed in `include`.
+    autoImport: false,
+    components: {
+      include: ["Timeline"],
+    },
     options: {
       ripple: true,
       inputVariant: "filled",

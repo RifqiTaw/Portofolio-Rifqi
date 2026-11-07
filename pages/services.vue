@@ -41,6 +41,21 @@ const services: Service[] = [
     highlight: true,
   },
   {
+    title: "Performance & SEO",
+    tagline: "Fast pages, found pages",
+    description:
+      "Auditing and fixing what makes a site slow or invisible — bundle size, image delivery, rendering strategy, and the meta tags search engines actually read.",
+    icon: "lucide:gauge",
+    iconClass: "bg-teal-50 text-teal-600",
+    deliverables: [
+      "Core Web Vitals & Lighthouse improvement",
+      "Image optimization and lazy loading",
+      "SSR / SSG rendering strategy",
+      "Meta tags, Open Graph & sitemap setup",
+    ],
+    stack: ["Nuxt SSR", "Lighthouse", "Sitemap", "Open Graph"],
+  },
+  {
     title: "Backend & REST API",
     tagline: "Server side that keeps up",
     description:
@@ -116,21 +131,7 @@ const services: Service[] = [
     ],
     stack: ["Tailwind CSS", "Bootstrap", "PrimeVue", "shadcn", "GSAP"],
   },
-  {
-    title: "Performance & SEO",
-    tagline: "Fast pages, found pages",
-    description:
-      "Auditing and fixing what makes a site slow or invisible — bundle size, image delivery, rendering strategy, and the meta tags search engines actually read.",
-    icon: "lucide:gauge",
-    iconClass: "bg-teal-50 text-teal-600",
-    deliverables: [
-      "Core Web Vitals & Lighthouse improvement",
-      "Image optimization and lazy loading",
-      "SSR / SSG rendering strategy",
-      "Meta tags, Open Graph & sitemap setup",
-    ],
-    stack: ["Nuxt SSR", "Lighthouse", "Sitemap", "Open Graph"],
-  },
+
   {
     title: "Maintenance & Deployment",
     tagline: "After launch matters too",
@@ -328,9 +329,7 @@ onUnmounted(() => ctx?.revert());
           </p>
         </div>
 
-        <div
-          class="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-5"
-        >
+        <div class="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-5">
           <div
             v-for="step in steps"
             :key="step.number"
