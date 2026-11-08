@@ -108,7 +108,7 @@ onUnmounted(() => mm?.revert());
       <div class="hero-canvas grid grid-cols-1 gap-3 sm:grid-cols-2 lg:block">
         <!-- Title -->
         <div
-          class="hero-title relative isolate flex flex-col justify-between gap-5 overflow-hidden p-3 sm:col-span-2 sm:p-5 lg:p-6"
+          class="hero-title relative isolate flex flex-col justify-between gap-5 overflow-hidden rounded-[--hero-r] p-3 sm:col-span-2 sm:p-5 lg:p-6"
         >
           <span
             class="pointer-events-none absolute -left-20 -top-20 -z-10 h-64 w-64 rounded-full bg-brand/15 blur-3xl"
